@@ -22,6 +22,22 @@ function normalizePageName(pathname) {
 	return fileName.toLowerCase();
 }
 
+async function injectComponent(slotId, componentPath) {
+	const slot = document.getElementById(slotId);
+	if (!slot) {
+		return null;
+	}
+
+	const resolvedPath = slot.dataset.component || componentPath;
+	const response = await fetch(resolvedPath, { cache: "no-store" });
+	if (!response.ok) {
+		throw new Error(`Impossible de charger ${resolvedPath}`);
+	}
+
+	slot.innerHTML = await response.text();
+	return slot;
+}
+
 function normalizeLinkTarget(href) {
 	if (!href) {
 		return "";
@@ -50,16 +66,10 @@ async function injectNavbar() {
 		return;
 	}
 
-	const componentPath = slot.dataset.component || "Composants/navbar.partial.html";
 	const scriptPath = slot.dataset.script || "js/composants/navbar.js";
 
 	try {
-		const response = await fetch(componentPath, { cache: "no-store" });
-		if (!response.ok) {
-			throw new Error(`Impossible de charger ${componentPath}`);
-		}
-
-		slot.innerHTML = await response.text();
+		await injectComponent("navbar-slot", "Composants/navbar.partial.html");
 		await loadScriptOnce(scriptPath);
 
 		if (typeof window.setupNavbarBurger === "function") {
@@ -72,6 +82,15 @@ async function injectNavbar() {
 	}
 }
 
+async function injectFooter() {
+	try {
+		await injectComponent("footer-slot", "Composants/footer.partial.html");
+	} catch (error) {
+		console.error("Erreur injection footer:", error);
+	}
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 	injectNavbar();
+	injectFooter();
 });
