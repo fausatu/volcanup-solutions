@@ -57,6 +57,12 @@ function setupNavbarBurger(root = document) {
 	burger.dataset.bound = "true";
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+window.setupNavbarBurger = setupNavbarBurger;
+
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", () => {
+		setupNavbarBurger();
+	});
+} else {
 	setupNavbarBurger();
-});
+}

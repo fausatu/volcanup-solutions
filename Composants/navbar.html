@@ -1,41 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="../css/composants/navbar.css">
-    <title>Document</title>
-</head>
-<body>
-     <header class="site-header">
-  <div class="container navbar">
-    <a class="navbar__logo" href="index.html" aria-label="Accueil Volcan'up Solutions">
-      <img src="../Assets/Images/Logo-Volcan-Up-Solutions.png" alt="Logo Volcan'up Solutions" />
-    </a>
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Composant Navbar</title>
+    <link rel="stylesheet" href="../css/base/reset.css" />
+    <link rel="stylesheet" href="../css/base/variables.css" />
+    <link rel="stylesheet" href="../css/composants/navbar.css" />
+  </head>
+  <body>
+    <div
+      id="navbar-slot"
+      data-component="navbar.partial.html"
+      data-script="../js/composants/navbar.js"
+    ></div>
 
-    <button
-      class="navbar__burger"
-      type="button"
-      aria-expanded="false"
-      aria-controls="primary-navigation"
-      aria-label="Ouvrir le menu"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav class="navbar__nav" id="primary-navigation" aria-label="Navigation principale">
-      <ul class="navbar__links">
-        <li><a class="navbar__link navbar__link--active" href="index.html">Accueil</a></li>
-        <li><a class="navbar__link" href="../A-propos.html">A propos</a></li>
-        <li><a class="navbar__link" href="../Nos-prestations.html">Nos prestations</a></li>
-        <li><a class="navbar__link" href="../Actualites.html">Actualites</a></li>
-        <li><a class="navbar__link" href="../contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-  
-</body>
+    <script src="../js/main.js"></script>
+  </body>
 </html>
