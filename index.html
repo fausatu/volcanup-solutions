@@ -4,11 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Volcan'up Solutions</title>
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/base/reset.css" />
+    <link rel="stylesheet" href="css/base/variables.css" />
+    <link rel="stylesheet" href="css/composants/navbar.css" />
+    <link rel="stylesheet" href="css/pages/main.css" />
   </head>
   <body>
     <div id="navbar-slot"></div>
+
+    <main class="page-shell">
+      <section class="hero-home section surface-warm">
+        <div class="container hero-home__layout">
+          <div class="hero-home__content">
+            <p class="eyebrow">Conseil RH et recrutement</p>
+            <h1 class="hero-home__title">Des pages bien cadrees, lisibles et dimensionnees juste comme il faut.</h1>
+            <p class="hero-home__text">
+              Cette base te donne un rendu plus present a l'ecran: largeur maitrisee, typo lisible,
+              espacements equilibres et sections qui ne paraissent pas reculees.
+            </p>
+            <div class="hero-home__actions">
+              <a class="button button--primary" href="Nos-prestations.html">Nos prestations</a>
+              <a class="button button--ghost" href="contact.html">Nous contacter</a>
+            </div>
+          </div>
+
+          <aside class="hero-home__panel" aria-label="Repere de mise en page">
+            <p class="hero-home__panel-label">Repere layout</p>
+            <ul class="hero-home__stats">
+              <li>
+                <strong>1280px max</strong>
+                <span>Largeur confortable sans effet trop recule.</span>
+              </li>
+              <li>
+                <strong>Typo lisible</strong>
+                <span>Base accessible avec bonne presence visuelle.</span>
+              </li>
+              <li>
+                <strong>Sections equilibrees</strong>
+                <span>Padding vertical bien dose pour desktop et mobile.</span>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </main>
 
     <script src="js/main.js"></script>
   </body>

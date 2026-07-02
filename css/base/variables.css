@@ -22,6 +22,7 @@
 	--color-warning: #d97706;
 	--color-error: #dc2626;
 	--color-info: #0284c7;
+    --color-link: #000102;
 
 	/* Focus */
 	--focus-ring-color: rgba(236, 84, 47, 0.35);
