@@ -30,6 +30,7 @@
 					<div class="news-layout__filters" role="tablist" aria-label="Cat&eacute;gories d'actualit&eacute;s">
 						<button class="news-pill news-pill--active" type="button" role="tab" aria-selected="true" data-category="all">Tout</button>
 						<button class="news-pill" type="button" role="tab" aria-selected="false" data-category="conseil-rh">Conseil RH</button>
+						<button class="news-pill" type="button" role="tab" aria-selected="false" data-category="recrutement">Recrutement</button>
 					</div>
 
 					<article class="news-featured" data-article-id="featured-1" data-category="conseil-rh">
@@ -50,7 +51,7 @@
 							<div class="news-card__body">
 								<h3 class="news-card__title">Marque employeur et ancrage local</h3>
 								<p class="news-card__excerpt">Les actions simples pour augmenter votre visibilit&eacute; et convaincre durablement.</p>
-								<a class="news-card__link" href="#">Read more</a>
+								<a class="news-card__link" href="#">Lire plus</a>
 							</div>
 							<ul class="news-card__meta" aria-label="Informations de publication">
 								<li>15 Feb</li>
@@ -59,12 +60,12 @@
 							</ul>
 						</article>
 
-						<article class="news-card" data-category="conseil-rh">
+						<article class="news-card" data-category="recrutement">
 							<div class="news-card__media" aria-hidden="true"></div>
 							<div class="news-card__body">
 								<h3 class="news-card__title">R&eacute;ussir son onboarding RH</h3>
 								<p class="news-card__excerpt">Structurer les 90 premiers jours pour limiter le turnover et cr&eacute;er l'engagement.</p>
-								<a class="news-card__link" href="#">Read more</a>
+								<a class="news-card__link" href="#">Lire plus</a>
 							</div>
 							<ul class="news-card__meta" aria-label="Informations de publication">
 								<li>15 Feb</li>
@@ -73,12 +74,12 @@
 							</ul>
 						</article>
 
-						<article class="news-card" data-category="conseil-rh">
+						<article class="news-card" data-category="recrutement">
 							<div class="news-card__media" aria-hidden="true"></div>
 							<div class="news-card__body">
 								<h3 class="news-card__title">Comp&eacute;tences p&eacute;nuriques : anticiper</h3>
 								<p class="news-card__excerpt">Cartographier les besoins et concevoir une strat&eacute;gie de sourcing continue.</p>
-								<a class="news-card__link" href="#">Read more</a>
+								<a class="news-card__link" href="#">Lire plus</a>
 							</div>
 							<ul class="news-card__meta" aria-label="Informations de publication">
 								<li>15 Feb</li>
@@ -87,12 +88,12 @@
 							</ul>
 						</article>
 
-						<article class="news-card" data-category="conseil-rh">
+						<article class="news-card" data-category="recrutement">
 							<div class="news-card__media" aria-hidden="true"></div>
 							<div class="news-card__body">
 								<h3 class="news-card__title">RPO : quand l'activer ?</h3>
 								<p class="news-card__excerpt">Identifier les signaux qui justifient l'externalisation partielle du recrutement.</p>
-								<a class="news-card__link" href="#">Read more</a>
+								<a class="news-card__link" href="#">Lire plus</a>
 							</div>
 							<ul class="news-card__meta" aria-label="Informations de publication">
 								<li>15 Feb</li>
@@ -106,7 +107,7 @@
 							<div class="news-card__body">
 								<h3 class="news-card__title">Leadership de proximit&eacute;</h3>
 								<p class="news-card__excerpt">Renforcer la relation manager-collaborateur avec des rituels simples.</p>
-								<a class="news-card__link" href="#">Read more</a>
+								<a class="news-card__link" href="#">Lire plus</a>
 							</div>
 							<ul class="news-card__meta" aria-label="Informations de publication">
 								<li>15 Feb</li>
@@ -120,7 +121,7 @@
 							<div class="news-card__body">
 								<h3 class="news-card__title">Communication RH qui convertit</h3>
 								<p class="news-card__excerpt">Transformer les messages RH en argumentaires attractifs pour vos cibles.</p>
-								<a class="news-card__link" href="#">Read more</a>
+								<a class="news-card__link" href="#">Lire plus</a>
 							</div>
 							<ul class="news-card__meta" aria-label="Informations de publication">
 								<li>15 Feb</li>
@@ -130,13 +131,7 @@
 						</article>
 					</div>
 
-					<nav class="news-pagination" aria-label="Pagination actualit&eacute;s">
-						<button class="news-dot news-dot--active" type="button" aria-label="Page 1" aria-current="page"></button>
-						<button class="news-dot" type="button" aria-label="Page 2"></button>
-						<button class="news-dot" type="button" aria-label="Page 3"></button>
-						<button class="news-dot" type="button" aria-label="Page 4"></button>
-						<button class="news-dot" type="button" aria-label="Page 5"></button>
-					</nav>
+					<nav class="news-pagination" aria-label="Pagination actualit&eacute;s" data-news-pagination></nav>
 				</div>
 			</section>
 		</main>
@@ -144,5 +139,6 @@
 		<div id="footer-slot"></div>
 
 		<script src="js/main.js"></script>
+		<script src="js/pages/actualites.js"></script>
 	</body>
 </html>
