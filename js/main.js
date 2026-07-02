@@ -22,12 +22,22 @@ function normalizePageName(pathname) {
 	return fileName.toLowerCase();
 }
 
+function normalizeLinkTarget(href) {
+	if (!href) {
+		return "";
+	}
+
+	const cleanHref = href.split("#")[0].split("?")[0];
+	const fileName = cleanHref.split("/").pop() || "index.html";
+	return fileName.toLowerCase();
+}
+
 function setActiveNavbarLink(root = document) {
 	const currentPage = normalizePageName(window.location.pathname);
 	const links = root.querySelectorAll(".navbar__link");
 
 	links.forEach((link) => {
-		const linkTarget = (link.getAttribute("href") || "").toLowerCase();
+		const linkTarget = normalizeLinkTarget(link.getAttribute("href"));
 		const isHomeAlias = currentPage === "" || currentPage === "/";
 		const isMatch = linkTarget === currentPage || (isHomeAlias && linkTarget === "index.html");
 		link.classList.toggle("navbar__link--active", isMatch);
