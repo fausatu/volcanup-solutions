@@ -1,0 +1,29 @@
+:root {
+  /* Couleurs */
+  --color-black: #000;
+  --color-white: #fff;
+  --color-primary: #ff7a00;
+  --color-primary-light: #ffb366;
+  --color-primary-dark: #cc5f00;
+
+  /* Espacements */
+  --spacing-small: 0.5rem; /* 8px */
+  --spacing-medium: 1rem; /* 16px */
+  --spacing-large: 1.5rem; /* 24px */
+
+  /* Bordures */
+  --border-radius: 0.5rem; /* 8px */
+
+  /* Boutons */
+  --button-height: 2.75rem; /* 44px */
+
+  /* Police */
+  --font-size-small: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-large: 1.25rem; /* 20px */
+
+  /* Sections */
+
+  --section-height: 100vh;
+  --section-gap: 2rem;
+}
