@@ -18,7 +18,9 @@ body {
   position: sticky;
   top: 0;
   z-index: var(--z-sticky);
-  background-color: var(--color-primary-light);
+  background-color: rgba(253, 241, 237, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-bottom: var(--border-width) solid var(--color-border);
 }
 
