@@ -1,0 +1,183 @@
+const API_BASE = window.ADMIN_API_BASE || "http://localhost:4000/api";
+const TOKEN_KEY = "volcanup_admin_access_token";
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function getStoredToken() {
+  return sessionStorage.getItem(TOKEN_KEY) || "";
+}
+
+function setStoredToken(token) {
+  if (token) {
+    sessionStorage.setItem(TOKEN_KEY, token);
+    return;
+  }
+  sessionStorage.removeItem(TOKEN_KEY);
+}
+
+function setFeedback(feedbackEl, message, type = "") {
+  feedbackEl.textContent = message;
+  feedbackEl.classList.remove("admin-feedback--error", "admin-feedback--success");
+  if (type) {
+    feedbackEl.classList.add(type === "error" ? "admin-feedback--error" : "admin-feedback--success");
+  }
+}
+
+async function requestJson(path, options = {}) {
+  const response = await fetch(`${API_BASE}${path}`, {
+    headers: {
+      "Content-Type": "application/json",
+      ...(options.headers || {})
+    },
+    ...options
+  });
+
+  const text = await response.text();
+  const data = text ? JSON.parse(text) : null;
+
+  if (!response.ok) {
+    const message = data?.message || "Erreur API";
+    throw new Error(message);
+  }
+
+  return data;
+}
+
+function renderArticles(listElement, articles) {
+  if (!Array.isArray(articles) || !articles.length) {
+    listElement.innerHTML = '<p class="admin-article-item">Aucun article publie pour le moment.</p>';
+    return;
+  }
+
+  listElement.innerHTML = articles
+    .map(
+      (article) => `
+        <article class="admin-article-item">
+          <h3>${escapeHtml(article.title)}</h3>
+          <div class="admin-article-meta">
+            <span>${escapeHtml(article.date || "")}</span>
+            <span>${escapeHtml(article.category || "")}</span>
+            <span>${escapeHtml(article.socialNetwork || "")}</span>
+          </div>
+          <a class="admin-article-link" href="${escapeHtml(article.url)}" target="_blank" rel="noopener noreferrer">Voir le post source</a>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function setupAdminPage() {
+  const loginPanel = document.getElementById("admin-login-panel");
+  const editorPanel = document.getElementById("admin-editor-panel");
+  const loginForm = document.getElementById("admin-login-form");
+  const articleForm = document.getElementById("admin-article-form");
+  const refreshButton = document.getElementById("admin-refresh");
+  const logoutButton = document.getElementById("admin-logout");
+  const feedback = document.getElementById("admin-feedback");
+  const list = document.getElementById("admin-articles-list");
+
+  if (!loginPanel || !editorPanel || !loginForm || !articleForm || !refreshButton || !logoutButton || !feedback || !list) {
+    return;
+  }
+
+  let accessToken = getStoredToken();
+
+  function togglePanels() {
+    const isLogged = Boolean(accessToken);
+    loginPanel.classList.toggle("admin-panel--hidden", isLogged);
+    editorPanel.classList.toggle("admin-panel--hidden", !isLogged);
+  }
+
+  async function loadArticles() {
+    try {
+      const articles = await requestJson("/articles", { method: "GET" });
+      renderArticles(list, articles);
+    } catch (error) {
+      setFeedback(feedback, `Chargement impossible: ${error.message}`, "error");
+    }
+  }
+
+  loginForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(loginForm);
+    const payload = {
+      email: String(formData.get("email") || "").trim(),
+      password: String(formData.get("password") || "")
+    };
+
+    try {
+      const data = await requestJson("/auth/login", {
+        method: "POST",
+        body: JSON.stringify(payload)
+      });
+
+      accessToken = data.accessToken;
+      setStoredToken(accessToken);
+      loginForm.reset();
+      togglePanels();
+      setFeedback(feedback, "Connexion reussie.", "success");
+    } catch (error) {
+      setFeedback(feedback, `Connexion refusee: ${error.message}`, "error");
+    }
+  });
+
+  articleForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (!accessToken) {
+      setFeedback(feedback, "Session expiree, reconnectez-vous.", "error");
+      togglePanels();
+      return;
+    }
+
+    const formData = new FormData(articleForm);
+    const payload = {
+      title: String(formData.get("title") || "").trim(),
+      url: String(formData.get("url") || "").trim(),
+      category: String(formData.get("category") || "").trim(),
+      date: String(formData.get("date") || "").trim(),
+      socialNetwork: String(formData.get("socialNetwork") || "").trim().toLowerCase()
+    };
+
+    try {
+      await requestJson("/admin/articles", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        },
+        body: JSON.stringify(payload)
+      });
+
+      articleForm.reset();
+      setFeedback(feedback, "Article publie avec succes.", "success");
+      await loadArticles();
+    } catch (error) {
+      setFeedback(feedback, `Publication echouee: ${error.message}`, "error");
+    }
+  });
+
+  refreshButton.addEventListener("click", async () => {
+    await loadArticles();
+    setFeedback(feedback, "Liste actualisee.", "success");
+  });
+
+  logoutButton.addEventListener("click", () => {
+    accessToken = "";
+    setStoredToken("");
+    togglePanels();
+    setFeedback(feedback, "Vous etes deconnecte.", "success");
+  });
+
+  togglePanels();
+  loadArticles();
+}
+
+document.addEventListener("DOMContentLoaded", setupAdminPage);
