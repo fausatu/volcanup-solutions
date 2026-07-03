@@ -1044,6 +1044,7 @@
 
 	.services-recruitment-offers {
 		padding: 0 var(--space-section-x) clamp(var(--space-10), 8vw, var(--space-16));
+		overflow: hidden;
 	}
 
 	.services-recruitment-offers__inner {
@@ -1065,6 +1066,18 @@
 	.services-recruitment-offers__list {
 		display: grid;
 		gap: var(--space-4);
+	}
+
+	.services-recruitment-offers__wave {
+		margin-top: clamp(var(--space-8), 4vw, var(--space-10));
+		margin-inline: calc(-1 * var(--space-section-x));
+		height: clamp(3.2rem, 7vw, 5rem);
+	}
+
+	.services-recruitment-offers__wave svg {
+		display: block;
+		width: 100%;
+		height: 100%;
 	}
 
 	.services-offer-card {
@@ -1133,6 +1146,10 @@
 
 		.services-recruitment-offers__title {
 			margin-bottom: var(--space-4);
+		}
+
+		.services-recruitment-offers__wave {
+			height: clamp(2.8rem, 10vw, 4.2rem);
 		}
 
 		.services-offer-card {
