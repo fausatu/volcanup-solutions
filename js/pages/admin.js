@@ -160,7 +160,7 @@ function setupAdminPage() {
     loginPanel.classList.toggle("admin-panel--hidden", isLogged);
     editorPanel.classList.toggle("admin-panel--hidden", !isLogged);
     heroSubtitle.textContent = isLogged
-      ? "Session admin active. Publiez et gerez vos articles reseaux sociaux."
+      ? "Bienvenue Madame Boilon. Session admin active pour publier et gerer vos articles reseaux sociaux."
       : "Connectez-vous pour ajouter des articles depuis vos posts reseaux sociaux.";
   }
 
