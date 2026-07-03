@@ -209,6 +209,47 @@
   color: #166534;
 }
 
+.admin-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  background: rgba(15, 23, 42, 0.45);
+  padding: var(--space-4);
+}
+
+.admin-modal--hidden {
+  display: none;
+}
+
+.admin-modal__dialog {
+  width: min(30rem, 100%);
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-6);
+}
+
+.admin-modal__dialog h2 {
+  margin: 0;
+  color: #1f2937;
+}
+
+.admin-modal__dialog p {
+  margin: var(--space-3) 0 0;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.admin-modal__actions {
+  margin-top: var(--space-5);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+}
+
 @media (max-width: 48rem) {
   .admin-panel__header {
     flex-direction: column;

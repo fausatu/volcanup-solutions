@@ -49,6 +49,7 @@ async function requestJson(path, options = {}) {
     const issues = Array.isArray(data?.issues) ? data.issues : [];
     const error = new Error(message);
     error.issues = issues;
+    error.status = response.status;
     throw error;
   }
 
@@ -104,12 +105,55 @@ function setupAdminPage() {
   const logoutButton = document.getElementById("admin-logout");
   const feedback = document.getElementById("admin-feedback");
   const list = document.getElementById("admin-articles-list");
+  const deleteModal = document.getElementById("admin-delete-modal");
+  const deleteModalMessage = document.getElementById("admin-delete-message");
+  const deleteModalCancel = document.getElementById("admin-delete-cancel");
+  const deleteModalConfirm = document.getElementById("admin-delete-confirm");
 
-  if (!loginPanel || !editorPanel || !heroSubtitle || !loginForm || !articleForm || !refreshButton || !logoutButton || !feedback || !list) {
+  if (
+    !loginPanel ||
+    !editorPanel ||
+    !heroSubtitle ||
+    !loginForm ||
+    !articleForm ||
+    !refreshButton ||
+    !logoutButton ||
+    !feedback ||
+    !list ||
+    !deleteModal ||
+    !deleteModalMessage ||
+    !deleteModalCancel ||
+    !deleteModalConfirm
+  ) {
     return;
   }
 
   let accessToken = getStoredToken();
+  let pendingDeleteArticleId = "";
+
+  function closeDeleteModal() {
+    pendingDeleteArticleId = "";
+    deleteModal.classList.add("admin-modal--hidden");
+  }
+
+  function openDeleteModal(articleId) {
+    pendingDeleteArticleId = articleId;
+    deleteModalMessage.textContent = "Cette action est definitive et supprimera l'article de la page Actualites.";
+    deleteModal.classList.remove("admin-modal--hidden");
+  }
+
+  function handleUnauthorized(error) {
+    if (!error || error.status !== 401) {
+      return false;
+    }
+
+    accessToken = "";
+    setStoredToken("");
+    closeDeleteModal();
+    togglePanels();
+    setFeedback(feedback, "Session expiree, reconnectez-vous.", "error");
+    return true;
+  }
 
   function togglePanels() {
     const isLogged = Boolean(accessToken);
@@ -186,6 +230,10 @@ function setupAdminPage() {
       setFeedback(feedback, "Article publie avec succes.", "success");
       await loadArticles();
     } catch (error) {
+      if (handleUnauthorized(error)) {
+        return;
+      }
+
       const details = formatValidationIssues(error.issues);
       const suffix = details ? ` (${details})` : "";
       setFeedback(feedback, `Publication echouee: ${error.message}${suffix}`, "error");
@@ -220,21 +268,55 @@ function setupAdminPage() {
       return;
     }
 
-    if (!window.confirm("Confirmer la suppression de cet article ?")) {
+    openDeleteModal(articleId);
+  });
+
+  deleteModalCancel.addEventListener("click", () => {
+    closeDeleteModal();
+  });
+
+  deleteModal.addEventListener("click", (event) => {
+    if (event.target === deleteModal) {
+      closeDeleteModal();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !deleteModal.classList.contains("admin-modal--hidden")) {
+      closeDeleteModal();
+    }
+  });
+
+  deleteModalConfirm.addEventListener("click", async () => {
+    if (!pendingDeleteArticleId) {
+      closeDeleteModal();
+      return;
+    }
+
+    if (!accessToken) {
+      closeDeleteModal();
+      setFeedback(feedback, "Session expiree, reconnectez-vous.", "error");
+      togglePanels();
       return;
     }
 
     try {
-      await requestJson(`/admin/articles/${encodeURIComponent(articleId)}`, {
+      await requestJson(`/admin/articles/${encodeURIComponent(pendingDeleteArticleId)}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${accessToken}`
         }
       });
 
+      closeDeleteModal();
       setFeedback(feedback, "Article supprime avec succes.", "success");
       await loadArticles();
     } catch (error) {
+      if (handleUnauthorized(error)) {
+        return;
+      }
+
+      closeDeleteModal();
       setFeedback(feedback, `Suppression echouee: ${error.message}`, "error");
     }
   });

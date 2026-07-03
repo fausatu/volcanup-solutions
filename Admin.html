@@ -89,6 +89,23 @@
           <p id="admin-feedback" class="admin-feedback" aria-live="polite"></p>
         </div>
       </section>
+
+      <div
+        id="admin-delete-modal"
+        class="admin-modal admin-modal--hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="admin-delete-title"
+      >
+        <div class="admin-modal__dialog">
+          <h2 id="admin-delete-title">Supprimer cet article ?</h2>
+          <p id="admin-delete-message">Cette action est definitive.</p>
+          <div class="admin-modal__actions">
+            <button type="button" id="admin-delete-cancel" class="admin-button admin-button--ghost">Annuler</button>
+            <button type="button" id="admin-delete-confirm" class="admin-button admin-button--danger">Supprimer</button>
+          </div>
+        </div>
+      </div>
     </main>
 
     <div id="footer-slot"></div>
