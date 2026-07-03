@@ -1,5 +1,8 @@
 const API_BASE = window.ADMIN_API_BASE || "http://localhost:4000/api";
 const TOKEN_KEY = "volcanup_admin_access_token";
+const ADMIN_DISPLAY_NAME = "Madame Boilon";
+
+let feedbackResetTimeoutId = null;
 
 function escapeHtml(value) {
   return String(value)
@@ -22,11 +25,26 @@ function setStoredToken(token) {
   sessionStorage.removeItem(TOKEN_KEY);
 }
 
-function setFeedback(feedbackEl, message, type = "") {
+function setFeedback(feedbackEl, message, type = "", options = {}) {
+  if (feedbackResetTimeoutId) {
+    clearTimeout(feedbackResetTimeoutId);
+    feedbackResetTimeoutId = null;
+  }
+
   feedbackEl.textContent = message;
   feedbackEl.classList.remove("admin-feedback--error", "admin-feedback--success");
   if (type) {
     feedbackEl.classList.add(type === "error" ? "admin-feedback--error" : "admin-feedback--success");
+  }
+
+  const shouldAutoClear = type === "success" && options.autoClear !== false;
+  if (shouldAutoClear) {
+    const clearAfterMs = Number(options.clearAfterMs) > 0 ? Number(options.clearAfterMs) : 3500;
+    feedbackResetTimeoutId = window.setTimeout(() => {
+      feedbackEl.textContent = "";
+      feedbackEl.classList.remove("admin-feedback--error", "admin-feedback--success");
+      feedbackResetTimeoutId = null;
+    }, clearAfterMs);
   }
 }
 
@@ -325,7 +343,7 @@ function setupAdminPage() {
     accessToken = "";
     setStoredToken("");
     togglePanels();
-    setFeedback(feedback, "Vous etes deconnecte.", "success");
+    setFeedback(feedback, `${ADMIN_DISPLAY_NAME}, vous etes deconnectee.`, "success");
   });
 
   togglePanels();
