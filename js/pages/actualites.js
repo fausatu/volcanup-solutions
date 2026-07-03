@@ -77,7 +77,7 @@ async function fetchArticlesFromApi() {
 		return [];
 	}
 
-	return json.map((item) => {
+	const mapped = json.map((item) => {
 		const categoryLabel = item.category || "Actualites";
 		const categorySlug = normalizeCategory(item.category || "actualites");
 		const socialNetworkLabel = String(item.socialNetwork || "social")
@@ -90,11 +90,28 @@ async function fetchArticlesFromApi() {
 			categoryLabel,
 			categorySlug,
 			date: item.date,
+			createdAt: item.createdAt || null,
 			autoText: item.autoText || "Extrait indisponible pour ce post.",
 			autoImageUrl: item.autoImageUrl || null,
 			socialNetworkLabel
 		};
 	});
+
+	// Safety sort: keep newest article first even if backend ordering changes.
+	mapped.sort((a, b) => {
+		const dateA = Date.parse(`${a.date}T00:00:00Z`);
+		const dateB = Date.parse(`${b.date}T00:00:00Z`);
+
+		if (dateA !== dateB) {
+			return dateB - dateA;
+		}
+
+		const createdA = a.createdAt ? Date.parse(a.createdAt) : 0;
+		const createdB = b.createdAt ? Date.parse(b.createdAt) : 0;
+		return createdB - createdA;
+	});
+
+	return mapped;
 }
 
 function setupActualitesPage() {

@@ -16,7 +16,7 @@ const articlesRouter = Router();
 
 articlesRouter.get("/articles", async (_req, res) => {
   const articles = await prisma.article.findMany({
-    orderBy: { date: "desc" }
+    orderBy: [{ date: "desc" }, { createdAt: "desc" }]
   });
 
   const response = articles.map((article: any) => ({
