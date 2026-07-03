@@ -31,12 +31,14 @@ function setFeedback(feedbackEl, message, type = "") {
 }
 
 async function requestJson(path, options = {}) {
+  const mergedHeaders = {
+    "Content-Type": "application/json",
+    ...(options.headers || {})
+  };
+
   const response = await fetch(`${API_BASE}${path}`, {
-    headers: {
-      "Content-Type": "application/json",
-      ...(options.headers || {})
-    },
-    ...options
+    ...options,
+    headers: mergedHeaders
   });
 
   const text = await response.text();

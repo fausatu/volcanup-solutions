@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { SocialNetwork } from "@prisma/client";
 import { z } from "zod";
 import { prisma } from "../lib/prisma";
 import { requireAdminAuth } from "../middleware/auth.middleware";
@@ -10,7 +9,7 @@ const articleInputSchema = z.object({
   url: z.string().url(),
   category: z.string().min(2).max(80),
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-  socialNetwork: z.nativeEnum(SocialNetwork)
+  socialNetwork: z.enum(["linkedin", "facebook", "instagram", "x"])
 });
 
 const articlesRouter = Router();
@@ -20,7 +19,7 @@ articlesRouter.get("/articles", async (_req, res) => {
     orderBy: { date: "desc" }
   });
 
-  const response = articles.map((article) => ({
+  const response = articles.map((article: any) => ({
     ...article,
     date: article.date.toISOString().slice(0, 10)
   }));
