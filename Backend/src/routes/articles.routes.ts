@@ -17,6 +17,36 @@ const articleIdParamSchema = z.object({
   id: z.string().cuid()
 });
 
+function buildSafeExcerpt(title: string, socialNetwork: string): string {
+  const networkLabel = socialNetwork ? socialNetwork.charAt(0).toUpperCase() + socialNetwork.slice(1) : "reseau social";
+  const trimmedTitle = String(title || "").trim();
+
+  if (trimmedTitle.length >= 12) {
+    return `Apercu de la publication: ${trimmedTitle}.`;
+  }
+
+  return `Apercu de publication ${networkLabel}.`;
+}
+
+function normalizeExcerpt(value: string | null | undefined, title: string, socialNetwork: string): string {
+  const text = String(value || "").replace(/\s+/g, " ").trim();
+
+  if (!text) {
+    return buildSafeExcerpt(title, socialNetwork);
+  }
+
+  const isLegacyPlaceholder = /^extrait automatique\s+/i.test(text);
+  const hasUrl = /https?:\/\//i.test(text);
+  const urlRatio = text.replace(/https?:\/\/\S+/gi, "").trim().length / text.length;
+  const looksLikeNoisyFallback = hasUrl && urlRatio < 0.65;
+
+  if (isLegacyPlaceholder || looksLikeNoisyFallback) {
+    return buildSafeExcerpt(title, socialNetwork);
+  }
+
+  return text;
+}
+
 const articlesRouter = Router();
 
 articlesRouter.get("/articles", async (_req, res) => {
@@ -26,6 +56,7 @@ articlesRouter.get("/articles", async (_req, res) => {
 
   const response = articles.map((article: any) => ({
     ...article,
+    autoText: normalizeExcerpt(article.autoText, article.title, String(article.socialNetwork || "")),
     date: article.date.toISOString().slice(0, 10)
   }));
 
@@ -53,7 +84,7 @@ articlesRouter.post("/admin/articles", requireAdminAuth, async (req, res) => {
       category: data.category,
       date: new Date(`${data.date}T00:00:00.000Z`),
       socialNetwork: data.socialNetwork,
-      autoText: data.excerpt || metadata.autoText,
+      autoText: normalizeExcerpt(data.excerpt || metadata.autoText, data.title, data.socialNetwork),
       autoImageUrl: metadata.autoImageUrl
     }
   });
