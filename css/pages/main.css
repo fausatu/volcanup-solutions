@@ -921,7 +921,6 @@
 
 	.services-recruitment-intro__eyebrow {
 		margin: 0;
-		scroll-margin-top: calc(var(--navbar-height) + var(--space-6));
 		justify-self: center;
 		display: inline-flex;
 		align-items: center;

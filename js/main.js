@@ -60,6 +60,41 @@ function setActiveNavbarLink(root = document) {
 	});
 }
 
+function setupHeroSectionScrollLinks(root = document) {
+	const links = root.querySelectorAll('.services-hero__actions a[href^="#"]');
+	if (!links.length) {
+		return;
+	}
+
+	const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+	links.forEach((link) => {
+		link.addEventListener("click", (event) => {
+			const href = link.getAttribute("href") || "";
+			if (!href.startsWith("#")) {
+				return;
+			}
+
+			event.preventDefault();
+			const target = document.querySelector(href);
+			if (!target) {
+				return;
+			}
+
+			const navbarHeightVar = getComputedStyle(document.documentElement).getPropertyValue("--navbar-height").trim();
+			const navbarHeight = Number.parseFloat(navbarHeightVar) || 72;
+			const targetTop = target.getBoundingClientRect().top + window.scrollY - navbarHeight - 8;
+
+			window.scrollTo({
+				top: Math.max(0, targetTop),
+				behavior: prefersReducedMotion ? "auto" : "smooth",
+			});
+
+			history.replaceState(null, "", href);
+		});
+	});
+}
+
 async function injectNavbar() {
 	const slot = document.getElementById("navbar-slot");
 	if (!slot) {
@@ -93,4 +128,5 @@ async function injectFooter() {
 document.addEventListener("DOMContentLoaded", () => {
 	injectNavbar();
 	injectFooter();
+	setupHeroSectionScrollLinks();
 });
