@@ -170,7 +170,7 @@
 	display: grid;
 	justify-items: center;
 	text-align: center;
-	gap: var(--space-2);
+	gap: var(--space-1);
 	padding-inline: var(--space-2);
 	z-index: 1;
 }
@@ -182,11 +182,19 @@
 	border: 2px solid var(--color-primary);
 	background: #f4f2ef;
 	color: var(--color-primary);
-	font-weight: var(--font-weight-bold);
-	font-size: 1.25rem;
 	display: grid;
 	place-items: center;
-	margin-bottom: var(--space-4);
+	margin-bottom: var(--space-3);
+}
+
+.about-journey__icon {
+	width: 1.38rem;
+	height: 1.38rem;
+	stroke: currentColor;
+	stroke-width: 1.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	fill: none;
 }
 
 .about-journey__dot--filled {
@@ -194,16 +202,17 @@
 	color: #fff;
 }
 
-.about-journey__step h3 {
+.about-journey__year {
 	margin: 0;
-	font-size: clamp(1.1rem, 1.7vw, 1.45rem);
-	color: #0f2544;
+	font-size: clamp(0.95rem, 1.4vw, 1.02rem);
+	font-weight: var(--font-weight-semibold);
+	color: var(--color-primary);
 }
 
-.about-journey__step p {
+.about-journey__text {
 	margin: 0;
-	font-size: clamp(0.95rem, 1.4vw, 1.05rem);
-	color: #334155;
+	font-size: clamp(0.92rem, 1.35vw, 1rem);
+	color: #475569;
 }
 
 @media (max-width: 62rem) {
