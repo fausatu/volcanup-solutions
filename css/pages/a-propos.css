@@ -1,11 +1,12 @@
 .about-intro {
-	padding-top: clamp(var(--space-12), 7vw, var(--space-20));
-	padding-bottom: clamp(var(--space-12), 7vw, var(--space-20));
+	padding-top: clamp(var(--space-10), 5vw, var(--space-16));
+	padding-bottom: clamp(var(--space-6), 4vw, var(--space-10));
+	scroll-margin-top: calc(var(--navbar-height) + var(--space-3));
 }
 
 .about-intro__inner {
 	display: grid;
-	gap: clamp(var(--space-8), 4vw, var(--space-12));
+	gap: clamp(var(--space-6), 3vw, var(--space-10));
 }
 
 .about-intro__heading {
@@ -30,7 +31,7 @@
 
 .about-intro__title {
 	margin: 0;
-	font-size: clamp(2rem, 5vw, 3.6rem);
+	font-size: clamp(1.8rem, 4.3vw, 3rem);
 	line-height: 1;
 	color: var(--color-primary);
 }
@@ -39,7 +40,7 @@
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) minmax(18rem, 1.05fr);
 	align-items: center;
-	gap: clamp(var(--space-8), 4vw, var(--space-12));
+	gap: clamp(var(--space-6), 3vw, var(--space-10));
 }
 
 .about-intro__content {
@@ -71,7 +72,7 @@
 	overflow: hidden;
 	box-shadow: var(--shadow-lg);
 	background: #f1f5f9;
-	min-height: clamp(20rem, 33vw, 30rem);
+	min-height: clamp(15rem, 24vw, 22rem);
 	display: grid;
 }
 
@@ -505,7 +506,7 @@
 	.about-intro__figure {
 		order: 1;
 		justify-self: center;
-		min-height: clamp(18rem, 48vw, 25rem);
+		min-height: clamp(13rem, 40vw, 18rem);
 	}
 
 	.about-journey__timeline {
