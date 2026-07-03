@@ -73,11 +73,13 @@
 .about-intro__figure {
 	position: relative;
 	margin: 0;
+	width: min(100%, 33rem);
+	justify-self: end;
 	border-radius: calc(var(--radius-xl) + var(--space-1));
 	overflow: hidden;
 	box-shadow: var(--shadow-lg);
 	background: #f1f5f9;
-	min-height: clamp(23rem, 38vw, 34rem);
+	min-height: clamp(20rem, 33vw, 30rem);
 	display: grid;
 }
 
@@ -114,7 +116,8 @@
 
 	.about-intro__figure {
 		order: 1;
-		min-height: clamp(19rem, 52vw, 28rem);
+		justify-self: center;
+		min-height: clamp(18rem, 48vw, 25rem);
 	}
 }
 
