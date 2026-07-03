@@ -7,6 +7,7 @@ type ExtractedMetadata = {
 };
 
 const FALLBACK_IMAGE = "https://dummyimage.com/1200x628/e2e8f0/334155&text=LinkedIn+Post";
+const AUTO_EXCERPT_MAX_LENGTH = 360;
 const LINKEDIN_GATED_TEXT_MARKERS = [
   "identifiez-vous",
   "inscrivez-vous",
@@ -22,7 +23,7 @@ function cleanText(value: string): string {
   return value.replace(/\s+/g, " ").trim();
 }
 
-function truncate(value: string, maxLength = 220): string {
+function truncate(value: string, maxLength = AUTO_EXCERPT_MAX_LENGTH): string {
   if (value.length <= maxLength) {
     return value;
   }
