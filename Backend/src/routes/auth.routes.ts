@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import { Router } from "express";
 import { z } from "zod";
-import { env } from "../config/env";
+import { prisma } from "../lib/prisma";
 import { signAccessToken } from "../services/token.service";
 
 const authRouter = Router();
@@ -20,20 +20,28 @@ authRouter.post("/auth/login", async (req, res) => {
   }
 
   const { email, password } = parsed.data;
+  const user = await prisma.user.findFirst({
+    where: {
+      email: {
+        equals: email.toLowerCase(),
+        mode: "insensitive"
+      }
+    }
+  });
 
-  if (email.toLowerCase() !== env.ADMIN_EMAIL.toLowerCase()) {
+  if (!user) {
     res.status(401).json({ message: "Identifiants invalides" });
     return;
   }
 
-  const isValidPassword = await bcrypt.compare(password, env.ADMIN_PASSWORD_HASH);
+  const isValidPassword = await bcrypt.compare(password, user.passwordHash);
 
   if (!isValidPassword) {
     res.status(401).json({ message: "Identifiants invalides" });
     return;
   }
 
-  const accessToken = signAccessToken({ sub: env.ADMIN_EMAIL, role: "admin" });
+  const accessToken = signAccessToken({ sub: user.id, role: "admin" });
 
   res.status(200).json({
     accessToken,
