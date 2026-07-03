@@ -44,10 +44,26 @@ async function requestJson(path, options = {}) {
 
   if (!response.ok) {
     const message = data?.message || "Erreur API";
-    throw new Error(message);
+    const issues = Array.isArray(data?.issues) ? data.issues : [];
+    const error = new Error(message);
+    error.issues = issues;
+    throw error;
   }
 
   return data;
+}
+
+function formatValidationIssues(issues) {
+  if (!Array.isArray(issues) || !issues.length) {
+    return "";
+  }
+
+  return issues
+    .map((issue) => {
+      const field = Array.isArray(issue.path) && issue.path.length ? issue.path.join(".") : "champ";
+      return `${field}: ${issue.message}`;
+    })
+    .join(" | ");
 }
 
 function renderArticles(listElement, articles) {
@@ -160,7 +176,9 @@ function setupAdminPage() {
       setFeedback(feedback, "Article publie avec succes.", "success");
       await loadArticles();
     } catch (error) {
-      setFeedback(feedback, `Publication echouee: ${error.message}`, "error");
+      const details = formatValidationIssues(error.issues);
+      const suffix = details ? ` (${details})` : "";
+      setFeedback(feedback, `Publication echouee: ${error.message}${suffix}`, "error");
     }
   });
 
