@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Actualites - Volcan'up Solutions</title>
+    <link rel="stylesheet" href="css/base/reset.css" />
+    <link rel="stylesheet" href="css/base/variables.css" />
+    <link rel="stylesheet" href="css/composants/navbar.css" />
+    <link rel="stylesheet" href="css/composants/footer.css" />
+    <link rel="stylesheet" href="css/pages/main.css" />
+    <link rel="stylesheet" href="css/pages/admin.css" />
+  </head>
+  <body>
+    <div id="navbar-slot"></div>
+
+    <main class="page-shell admin-shell">
+      <section class="admin-hero">
+        <div class="container admin-hero__inner">
+          <p class="admin-eyebrow">Console admin</p>
+          <h1>Gestion des actualites</h1>
+          <p id="admin-hero-subtitle">Connectez-vous pour ajouter des articles depuis vos posts reseaux sociaux.</p>
+        </div>
+      </section>
+
+      <section class="admin-layout">
+        <div class="container admin-layout__inner">
+          <p id="admin-feedback" class="admin-feedback" aria-live="polite"></p>
+
+          <section class="admin-panel" id="admin-login-panel" aria-labelledby="admin-login-title">
+            <h2 id="admin-login-title">Connexion</h2>
+            <form id="admin-login-form" class="admin-form">
+              <label for="admin-email">Email</label>
+              <input id="admin-email" name="email" type="email" autocomplete="username" required />
+
+              <label for="admin-password">Mot de passe</label>
+              <input id="admin-password" name="password" type="password" autocomplete="current-password" required />
+
+              <button type="submit" class="admin-button admin-button--primary">Se connecter</button>
+            </form>
+          </section>
+
+          <section class="admin-panel admin-panel--hidden" id="admin-editor-panel" aria-labelledby="admin-editor-title">
+            <div class="admin-panel__header">
+              <h2 id="admin-editor-title">Nouvel article</h2>
+              <button type="button" id="admin-logout" class="admin-button admin-button--ghost">Se deconnecter</button>
+            </div>
+
+            <form id="admin-article-form" class="admin-form admin-form--grid">
+              <label for="article-title">Titre</label>
+              <input id="article-title" name="title" type="text" maxlength="160" required />
+
+              <label for="article-url">URL du post</label>
+              <input id="article-url" name="url" type="url" required />
+
+              <label for="article-category">Categorie</label>
+              <input id="article-category" name="category" type="text" required />
+
+              <label for="article-date">Date</label>
+              <input id="article-date" name="date" type="date" required />
+
+              <label for="article-network">Reseau social</label>
+              <select id="article-network" name="socialNetwork" required>
+                <option value="linkedin">Linkedin</option>
+                <option value="facebook">Facebook</option>
+                <option value="instagram">Instagram</option>
+                <option value="x">X</option>
+              </select>
+
+              <label for="article-excerpt">Resume (optionnel)</label>
+              <textarea
+                id="article-excerpt"
+                name="excerpt"
+                rows="4"
+                maxlength="500"
+                placeholder="Ajoute un resume plus riche si l'extraction automatique est trop courte."
+              ></textarea>
+
+              <button type="submit" class="admin-button admin-button--primary">Publier l'article</button>
+            </form>
+          </section>
+
+          <section class="admin-panel" aria-labelledby="admin-list-title">
+            <div class="admin-panel__header">
+              <h2 id="admin-list-title">Articles publies</h2>
+              <button type="button" id="admin-refresh" class="admin-button admin-button--ghost">Actualiser</button>
+            </div>
+            <div id="admin-articles-list" class="admin-articles-list"></div>
+          </section>
+        </div>
+      </section>
+
+      <div
+        id="admin-delete-modal"
+        class="admin-modal admin-modal--hidden"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="admin-delete-title"
+      >
+        <div class="admin-modal__dialog">
+          <h2 id="admin-delete-title">Supprimer cet article ?</h2>
+          <p id="admin-delete-message">Cette action est definitive.</p>
+          <div class="admin-modal__actions">
+            <button type="button" id="admin-delete-cancel" class="admin-button admin-button--ghost">Annuler</button>
+            <button type="button" id="admin-delete-confirm" class="admin-button admin-button--danger">Supprimer</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="footer-slot"></div>
+
+    <script src="js/main.js"></script>
+    <script src="js/pages/admin.js"></script>
+  </body>
+</html>
