@@ -1042,6 +1042,109 @@
 		}
 	}
 
+	.services-recruitment-offers {
+		padding: 0 var(--space-section-x) clamp(var(--space-10), 8vw, var(--space-16));
+	}
+
+	.services-recruitment-offers__inner {
+		max-width: 72rem;
+		margin-inline: auto;
+		padding: clamp(var(--space-8), 4vw, var(--space-10));
+		border: 1px solid rgba(31, 41, 55, 0.08);
+		border-radius: var(--radius-md);
+		background: rgba(255, 255, 255, 0.62);
+	}
+
+	.services-recruitment-offers__title {
+		margin: 0 0 var(--space-6);
+		font-size: clamp(1.1rem, 2vw, 1.45rem);
+		font-weight: var(--font-weight-semibold);
+		color: #1e2a57;
+	}
+
+	.services-recruitment-offers__list {
+		display: grid;
+		gap: var(--space-4);
+	}
+
+	.services-offer-card {
+		display: grid;
+		grid-template-columns: minmax(12rem, 0.8fr) minmax(0, 1fr);
+		border: 1px solid rgba(31, 41, 55, 0.12);
+		border-radius: var(--radius-sm);
+		overflow: hidden;
+		background: #f9fbff;
+	}
+
+	.services-offer-card__meta {
+		padding: var(--space-4);
+		background: #eef2f8;
+		border-right: 1px solid rgba(236, 84, 47, 0.75);
+		display: grid;
+		align-content: start;
+		gap: var(--space-2);
+	}
+
+	.services-offer-card__meta h3 {
+		margin: 0;
+		font-size: clamp(0.92rem, 1.3vw, 1.02rem);
+		line-height: 1.35;
+		color: #253457;
+	}
+
+	.services-offer-card__meta p {
+		margin: 0;
+		font-size: 0.8rem;
+		font-weight: var(--font-weight-semibold);
+		color: var(--color-primary);
+	}
+
+	.services-offer-card__items {
+		margin: 0;
+		padding: var(--space-4);
+		list-style: none;
+		display: grid;
+		gap: 0.45rem;
+		font-size: 0.82rem;
+		line-height: 1.45;
+		color: #2f3647;
+	}
+
+	.services-offer-card__items li {
+		position: relative;
+		padding-left: 1.15rem;
+	}
+
+	.services-offer-card__items li::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0.4rem;
+		width: 0.42rem;
+		height: 0.42rem;
+		border-radius: 50%;
+		border: 1px solid #253457;
+	}
+
+	@media (max-width: 48rem) {
+		.services-recruitment-offers__inner {
+			padding: var(--space-4);
+		}
+
+		.services-recruitment-offers__title {
+			margin-bottom: var(--space-4);
+		}
+
+		.services-offer-card {
+			grid-template-columns: 1fr;
+		}
+
+		.services-offer-card__meta {
+			border-right: 0;
+			border-bottom: 1px solid rgba(236, 84, 47, 0.75);
+		}
+	}
+
 .page-shell--news {
 	background: #f7f7f7;
 }
