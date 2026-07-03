@@ -785,20 +785,15 @@
 }
 
 .services-hero {
-	padding-block: clamp(4rem, 8vw, 7rem);
+	padding-block: clamp(5rem, 10vw, 8rem);
 	padding-inline: var(--space-section-x);
 }
 
 .services-hero__inner {
 	width: min(100%, 46rem);
 	margin-inline: auto;
-	padding: clamp(var(--space-6), 4vw, var(--space-8)) clamp(var(--space-5), 3vw, var(--space-8));
+	padding: 0;
 	text-align: center;
-	border-radius: calc(var(--radius-xl) + 0.35rem);
-	border: 1px solid rgba(236, 84, 47, 0.12);
-	background: rgba(255, 255, 255, 0.52);
-	backdrop-filter: blur(2px);
-	box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
 	display: grid;
 	justify-items: center;
 	gap: var(--space-6);
@@ -885,12 +880,11 @@
 
 @media (max-width: 48rem) {
 	.services-hero {
-		padding-block: clamp(3.6rem, 11vw, 5rem);
+		padding-block: clamp(4.2rem, 12vw, 6rem);
 	}
 
 	.services-hero__inner {
 		gap: var(--space-5);
-		padding-inline: var(--space-4);
 	}
 
 	.services-hero__title {
