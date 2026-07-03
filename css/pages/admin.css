@@ -175,6 +175,25 @@
   font-weight: var(--font-weight-semibold);
 }
 
+.admin-article-actions {
+  margin-top: var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.admin-button--danger {
+  background: #fff;
+  color: #b91c1c;
+  border-color: #fecaca;
+}
+
+.admin-button--danger:hover {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+
 .admin-feedback {
   min-height: 1.5rem;
   margin: 0;

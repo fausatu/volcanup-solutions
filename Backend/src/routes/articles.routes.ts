@@ -13,6 +13,10 @@ const articleInputSchema = z.object({
   excerpt: z.string().min(30).max(500).optional()
 });
 
+const articleIdParamSchema = z.object({
+  id: z.string().cuid()
+});
+
 const articlesRouter = Router();
 
 articlesRouter.get("/articles", async (_req, res) => {
@@ -57,6 +61,37 @@ articlesRouter.post("/admin/articles", requireAdminAuth, async (req, res) => {
   res.status(201).json({
     ...article,
     date: article.date.toISOString().slice(0, 10)
+  });
+});
+
+articlesRouter.delete("/admin/articles/:id", requireAdminAuth, async (req, res) => {
+  const parsedParams = articleIdParamSchema.safeParse(req.params);
+
+  if (!parsedParams.success) {
+    res.status(400).json({
+      message: "Identifiant article invalide",
+      issues: parsedParams.error.issues
+    });
+    return;
+  }
+
+  const existing = await prisma.article.findUnique({
+    where: { id: parsedParams.data.id },
+    select: { id: true }
+  });
+
+  if (!existing) {
+    res.status(404).json({ message: "Article introuvable" });
+    return;
+  }
+
+  await prisma.article.delete({
+    where: { id: parsedParams.data.id }
+  });
+
+  res.status(200).json({
+    message: "Article supprime",
+    id: parsedParams.data.id
   });
 });
 

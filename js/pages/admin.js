@@ -84,7 +84,10 @@ function renderArticles(listElement, articles) {
             <span>${escapeHtml(article.category || "")}</span>
             <span>${escapeHtml(article.socialNetwork || "")}</span>
           </div>
-          <a class="admin-article-link" href="${escapeHtml(article.url)}" target="_blank" rel="noopener noreferrer">Voir le post source</a>
+          <div class="admin-article-actions">
+            <a class="admin-article-link" href="${escapeHtml(article.url)}" target="_blank" rel="noopener noreferrer">Voir le post source</a>
+            <button type="button" class="admin-button admin-button--danger" data-delete-article-id="${escapeHtml(article.id || "")}">Supprimer</button>
+          </div>
         </article>
       `
     )
@@ -188,6 +191,48 @@ function setupAdminPage() {
   refreshButton.addEventListener("click", async () => {
     await loadArticles();
     setFeedback(feedback, "Liste actualisee.", "success");
+  });
+
+  list.addEventListener("click", async (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) {
+      return;
+    }
+
+    const deleteButton = target.closest("[data-delete-article-id]");
+    if (!(deleteButton instanceof HTMLElement)) {
+      return;
+    }
+
+    const articleId = deleteButton.getAttribute("data-delete-article-id") || "";
+    if (!articleId) {
+      setFeedback(feedback, "Suppression impossible: article invalide.", "error");
+      return;
+    }
+
+    if (!accessToken) {
+      setFeedback(feedback, "Session expiree, reconnectez-vous.", "error");
+      togglePanels();
+      return;
+    }
+
+    if (!window.confirm("Confirmer la suppression de cet article ?")) {
+      return;
+    }
+
+    try {
+      await requestJson(`/admin/articles/${encodeURIComponent(articleId)}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${accessToken}`
+        }
+      });
+
+      setFeedback(feedback, "Article supprime avec succes.", "success");
+      await loadArticles();
+    } catch (error) {
+      setFeedback(feedback, `Suppression echouee: ${error.message}`, "error");
+    }
   });
 
   logoutButton.addEventListener("click", () => {
