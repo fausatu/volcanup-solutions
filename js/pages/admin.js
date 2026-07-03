@@ -97,6 +97,7 @@ function renderArticles(listElement, articles) {
 function setupAdminPage() {
   const loginPanel = document.getElementById("admin-login-panel");
   const editorPanel = document.getElementById("admin-editor-panel");
+  const heroSubtitle = document.getElementById("admin-hero-subtitle");
   const loginForm = document.getElementById("admin-login-form");
   const articleForm = document.getElementById("admin-article-form");
   const refreshButton = document.getElementById("admin-refresh");
@@ -104,7 +105,7 @@ function setupAdminPage() {
   const feedback = document.getElementById("admin-feedback");
   const list = document.getElementById("admin-articles-list");
 
-  if (!loginPanel || !editorPanel || !loginForm || !articleForm || !refreshButton || !logoutButton || !feedback || !list) {
+  if (!loginPanel || !editorPanel || !heroSubtitle || !loginForm || !articleForm || !refreshButton || !logoutButton || !feedback || !list) {
     return;
   }
 
@@ -114,6 +115,9 @@ function setupAdminPage() {
     const isLogged = Boolean(accessToken);
     loginPanel.classList.toggle("admin-panel--hidden", isLogged);
     editorPanel.classList.toggle("admin-panel--hidden", !isLogged);
+    heroSubtitle.textContent = isLogged
+      ? "Session admin active. Publiez et gerez vos articles reseaux sociaux."
+      : "Connectez-vous pour ajouter des articles depuis vos posts reseaux sociaux.";
   }
 
   async function loadArticles() {
