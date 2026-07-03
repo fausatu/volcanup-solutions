@@ -1,0 +1,251 @@
+/* =========================================================
+   CONTACT HERO — VERSION 1 (simple)
+   ========================================================= */
+
+/* .contact-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 35rem;
+  padding: 7rem;
+  background: rgba(236, 84, 47, 0.12);
+}
+
+.contact-hero h1 {
+  max-width: 48rem;
+  font-size: 3.5rem;
+  color: var(--color-primary);
+  margin: 0 auto;
+}
+
+.contact-hero p {
+  max-width: 42rem;
+  margin: 1.5rem auto 0;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-text);
+} */
+
+/* =========================================================
+   CONTACT HERO — VERSION 2 (IMAGE + BASE VERSION 1)
+   ========================================================= */
+
+.contact-hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  min-height: 35rem;
+  padding: 7rem;
+
+  position: relative;
+}
+
+.contact-hero--image {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../../Assets/Images/Images contact/Prenons contact.webp") center/cover
+      no-repeat;
+}
+
+.contact-hero h1 {
+  max-width: 48rem;
+  font-size: 3.5rem;
+  margin: 0 auto;
+
+  color: var(--color-primary);
+  text-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.6),
+    0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.contact-hero p {
+  max-width: 42rem;
+  margin: 1.5rem auto 0;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.6),
+    0 4px 12px rgba(0, 0, 0, 0.3);
+}
+/* =========================================================
+   CONTACT SHOWCASE — VERSION 3 (2 colonnes)
+   ========================================================= */
+
+/* .contact-showcase {
+  padding: 7rem 0;
+}
+
+.contact-showcase__wrapper {
+  max-width: 65rem;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.contact-showcase__content {
+  max-width: 36rem;
+}
+
+.contact-showcase__badge {
+  display: inline-block;
+  margin-bottom: 2rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  background: rgba(236, 84, 47, 0.08);
+  border: 1px solid rgba(75, 79, 132, 0.2);
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.contact-showcase h1 {
+  font-size: 3.2rem;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+}
+
+.contact-showcase h1 span {
+  color: var(--color-primary);
+}
+
+.contact-showcase p {
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  color: #5d6478;
+}
+
+.contact-showcase__infos {
+  display: grid;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.contact-info {
+  padding-left: 1rem;
+  border-left: 4px solid var(--color-primary);
+}
+
+.contact-info strong {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.contact-info a,
+.contact-info span {
+  color: #6d7288;
+  text-decoration: none;
+}
+
+.contact-showcase__image {
+  padding: 1rem;
+  border-radius: 1.5rem;
+  border: 2px solid rgba(75, 79, 132, 0.18);
+}
+
+.contact-showcase__image img {
+  width: 100%;
+  height: 32rem;
+  object-fit: cover;
+  border-radius: 1rem;
+  display: block;
+} */
+
+/* =========================================================
+   BOOKING / CALENDLY CARD
+   ========================================================= */
+
+.contact-booking {
+  padding: 10rem;
+}
+
+.contact-booking h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.contact-booking__card {
+  max-width: 46rem;
+  margin: auto;
+  padding: 8rem 5rem;
+  display: grid;
+  gap: 1.5rem;
+  justify-items: center;
+  text-align: center;
+  border-radius: var(--radius-xl);
+  border: 1px solid rgba(75, 79, 132, 0.14);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-booking__card svg {
+  width: 5rem;
+  height: 5rem;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: rgba(31, 41, 55, 0.08);
+  color: var(--color-primary);
+}
+
+.contact-booking__card p {
+  max-width: 28rem;
+  font-style: italic;
+  color: #8b90b3;
+}
+
+.contact-booking__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(236, 84, 47, 0.4);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.contact-booking__link:hover {
+  transform: translateY(-2px);
+  background: var(--color-primary-light);
+}
+
+/* =========================================================
+   RESPONSIVE GLOBAL
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .contact-hero,
+  .contact-booking,
+  .contact-showcase {
+    padding: 4rem 1.5rem;
+  }
+
+  .contact-hero h1,
+  .contact-showcase h1 {
+    font-size: 2.2rem;
+  }
+
+  .contact-showcase__wrapper {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .contact-showcase__image {
+    order: -1;
+  }
+
+  .contact-showcase__image img {
+    height: 20rem;
+  }
+
+  .contact-booking__card svg {
+    width: 4rem;
+    height: 4rem;
+  }
+}
