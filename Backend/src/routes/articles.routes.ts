@@ -9,7 +9,8 @@ const articleInputSchema = z.object({
   url: z.string().url(),
   category: z.string().min(2).max(80),
   date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
-  socialNetwork: z.enum(["linkedin", "facebook", "instagram", "x"])
+  socialNetwork: z.enum(["linkedin", "facebook", "instagram", "x"]),
+  excerpt: z.string().min(30).max(500).optional()
 });
 
 const articlesRouter = Router();
@@ -48,7 +49,7 @@ articlesRouter.post("/admin/articles", requireAdminAuth, async (req, res) => {
       category: data.category,
       date: new Date(`${data.date}T00:00:00.000Z`),
       socialNetwork: data.socialNetwork,
-      autoText: metadata.autoText,
+      autoText: data.excerpt || metadata.autoText,
       autoImageUrl: metadata.autoImageUrl
     }
   });

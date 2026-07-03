@@ -86,12 +86,19 @@
 }
 
 .admin-form input,
-.admin-form select {
+.admin-form select,
+.admin-form textarea {
   min-height: 2.8rem;
   border-radius: var(--radius-md);
   border: 1px solid #d1d5db;
   padding: 0.65rem 0.8rem;
   font: inherit;
+}
+
+.admin-form textarea {
+  min-height: 7rem;
+  resize: vertical;
+  line-height: 1.5;
 }
 
 .admin-form button {
@@ -100,7 +107,8 @@
 
 .admin-form--grid > label,
 .admin-form--grid > input,
-.admin-form--grid > select {
+.admin-form--grid > select,
+.admin-form--grid > textarea {
   grid-column: span 2;
 }
 

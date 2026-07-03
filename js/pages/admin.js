@@ -162,7 +162,8 @@ function setupAdminPage() {
       url: String(formData.get("url") || "").trim(),
       category: String(formData.get("category") || "").trim(),
       date: String(formData.get("date") || "").trim(),
-      socialNetwork: String(formData.get("socialNetwork") || "").trim().toLowerCase()
+      socialNetwork: String(formData.get("socialNetwork") || "").trim().toLowerCase(),
+      excerpt: String(formData.get("excerpt") || "").trim() || undefined
     };
 
     try {
