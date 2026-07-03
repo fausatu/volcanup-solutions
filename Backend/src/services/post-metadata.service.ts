@@ -57,9 +57,13 @@ function buildReadableFallback(url: string): string {
       const cleaned = postSlugMatch[1]
         .replace(/_+/g, " ")
         .replace(/-ugcpost-\d+.*$/i, "")
+        .replace(/-activity-\d+.*$/i, "")
         .replace(/-g\d+[a-z0-9]*$/i, "")
         .replace(/-{2,}/g, "-")
         .replace(/-/g, " ")
+        .replace(/\bactivity\b\s*\d*/gi, " ")
+        .replace(/\b\d{8,}\b/g, " ")
+        .replace(/\s+[a-z0-9]{3,8}$/i, "")
         .replace(/\s+/g, " ")
         .trim();
 
