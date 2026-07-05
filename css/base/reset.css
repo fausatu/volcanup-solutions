@@ -12,24 +12,31 @@
 
 /* Retire les marges par defaut */
 * {
-	margin: 0;
+  margin: 0;
 }
 
 /* Ameliore le rendu du texte */
 html:focus-within {
-	scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 html,
 body {
-	min-height: 100%;
+  min-height: 100%;
 }
 
 body {
-	line-height: 1.5;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8rem;
+} */
 
 /* Medias responsives par defaut */
 img,
@@ -37,8 +44,8 @@ picture,
 video,
 canvas,
 svg {
-	display: block;
-	max-width: 100%;
+  display: block;
+  max-width: 100%;
 }
 
 /* Evite les debordements de texte */
@@ -51,7 +58,7 @@ h5,
 h6,
 li,
 figcaption {
-	overflow-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Herite la typo dans les champs */
@@ -59,8 +66,8 @@ input,
 button,
 textarea,
 select {
-	font: inherit;
-	color: inherit;
+  font: inherit;
+  color: inherit;
 }
 
 /* Restaure un curseur lisible */
@@ -68,7 +75,7 @@ button,
 [type="button"],
 [type="reset"],
 [type="submit"] {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 /* Evite les styles iOS sur les boutons */
@@ -76,49 +83,86 @@ button,
 input,
 textarea,
 select {
-	-webkit-appearance: none;
-	appearance: none;
-	background: transparent;
-	border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  border-radius: 0;
 }
 
 /* Liens plus predictibles */
 a {
-	color: inherit;
-	text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 /* Listes sans puces (si besoin de puces, les redefinir localement) */
 ul,
 ol {
-	list-style: none;
-	padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 /* Tableaux plus propres */
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 /* Elements de formulaire etats de focus accessibles */
 :focus-visible {
-	outline: 2px solid currentColor;
-	outline-offset: 2px;
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: var(--space-button-padding-y)
+    calc(var(--space-button-padding-x) + var(--space-1));
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  transition:
+    transform var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button:focus-visible {
+  outline: var(--focus-ring-size) solid var(--focus-ring-color);
+  outline-offset: 3px;
+}
+
+.button--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: var(--shadow-md);
+}
+
+.button--primary:hover {
+  background-color: var(--color-primary-dark);
 }
 
 /* Respect des preferences utilisateur pour les animations */
 @media (prefers-reduced-motion: reduce) {
-	html:focus-within {
-		scroll-behavior: auto;
-	}
+  html:focus-within {
+    scroll-behavior: auto;
+  }
 
-	*,
-	*::before,
-	*::after {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-		scroll-behavior: auto !important;
-	}
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
