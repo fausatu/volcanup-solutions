@@ -30,6 +30,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8rem;
+} */
+
 /* Medias responsives par defaut */
 img,
 picture,
@@ -104,6 +111,43 @@ table {
 :focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 2px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: var(--space-button-padding-y)
+    calc(var(--space-button-padding-x) + var(--space-1));
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  transition:
+    transform var(--transition-fast),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button:focus-visible {
+  outline: var(--focus-ring-size) solid var(--focus-ring-color);
+  outline-offset: 3px;
+}
+
+.button--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: var(--shadow-md);
+}
+
+.button--primary:hover {
+  background-color: var(--color-primary-dark);
 }
 
 /* Respect des preferences utilisateur pour les animations */
