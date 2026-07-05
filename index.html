@@ -4,48 +4,257 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Volcan'up Solutions</title>
+
     <link rel="stylesheet" href="css/base/reset.css" />
     <link rel="stylesheet" href="css/base/variables.css" />
     <link rel="stylesheet" href="css/composants/navbar.css" />
     <link rel="stylesheet" href="css/composants/footer.css" />
     <link rel="stylesheet" href="css/pages/main.css" />
   </head>
+
   <body>
     <div id="navbar-slot"></div>
 
-    <main class="page-shell">
-      <section class="hero-home section surface-warm">
+    <main class="page-shell page-home">
+      <section class="hero-home section">
         <div class="container hero-home__layout">
+          <!-- LEFT -->
           <div class="hero-home__content">
-            <p class="eyebrow">Conseil RH et recrutement</p>
-            <h1 class="hero-home__title">Des pages bien cadrees, lisibles et dimensionnees juste comme il faut.</h1>
+            <span class="hero-home__badge"> PARTENAIRE RH & STRATÉGIE </span>
+
+            <h1 class="hero-home__title">
+              Propulsez votre <span class="accent">TPE-PME</span> avec avec un
+              accompagnement sur-mesure
+            </h1>
+
             <p class="hero-home__text">
-              Cette base te donne un rendu plus present a l'ecran: largeur maitrisee, typo lisible,
-              espacements equilibres et sections qui ne paraissent pas reculees.
+              Recrutement, RH en temps partagé, accompagnement des candidats.
+              Des solutions à la carte, pensées pour les petites entreprises.
             </p>
+
             <div class="hero-home__actions">
-              <a class="button button--primary" href="Nos-prestations.html">Nos prestations</a>
-              <a class="button button--ghost" href="contact.html">Nous contacter</a>
+              <a class="button button--primary" href="A-propos.html">
+                découvrir
+              </a>
             </div>
           </div>
 
-          <aside class="hero-home__panel" aria-label="Repere de mise en page">
-            <p class="hero-home__panel-label">Repere layout</p>
-            <ul class="hero-home__stats">
-              <li>
-                <strong>1280px max</strong>
-                <span>Largeur confortable sans effet trop recule.</span>
-              </li>
-              <li>
-                <strong>Typo lisible</strong>
-                <span>Base accessible avec bonne presence visuelle.</span>
-              </li>
-              <li>
-                <strong>Sections equilibrees</strong>
-                <span>Padding vertical bien dose pour desktop et mobile.</span>
-              </li>
-            </ul>
-          </aside>
+          <!-- RIGHT IMAGE -->
+          <div class="hero-home__media">
+            <img
+              src="Assets/Images/Images Accueil/page accueil.webp"
+              alt="Accompagnement RH"
+            />
+          </div>
+        </div>
+      </section>
+      <svg viewBox="0 0 1440 140" preserveAspectRatio="none" focusable="false">
+        <path
+          d="M0 56C150 95 280 120 430 111C610 99 732 39 900 30C1110 18 1260 74 1440 52V140H0V56Z"
+          fill="#ec542f"
+        />
+      </svg>
+      <section class="approach section">
+        <div class="container">
+          <header class="approach__header">
+            <h2>Une approche structurée pour vos enjeux</h2>
+            <p>Spécifique à vos besoins</p>
+          </header>
+
+          <!-- CARD WRAPPER -->
+          <div class="approach__box">
+            <div class="approach__grid">
+              <article class="approach__card">
+                <div class="approach__icon">
+                  <img
+                    class="icon-thick"
+                    src="Assets/Images/home_icons/bar-chart.svg"
+                    alt=""
+                  />
+                </div>
+                <h3>Conseil stratégique</h3>
+                <p>
+                  Définir vos objectifs, mesurer vos résultats et bâtir un plan
+                  d’action concret pour votre entreprise.
+                </p>
+              </article>
+
+              <article class="approach__card">
+                <div class="approach__icon">
+                  <img
+                    class="icon-thick"
+                    src="Assets/Images/home_icons/office-building.svg"
+                    alt=""
+                  />
+                </div>
+                <h3>Appui organisationnel</h3>
+                <p>
+                  Optimiser votre structure interne pour gagner en efficacité et
+                  concentrer votre énergie sur votre cœur de métier.
+                </p>
+              </article>
+
+              <article class="approach__card">
+                <div class="approach__icon">
+                  <img
+                    class="icon-thick"
+                    src="Assets/Images/home_icons/user-avatar.svg"
+                    alt=""
+                  />
+                </div>
+                <h3>Accompagnement RH</h3>
+                <p>
+                  Recrutement, gestion des équipes, obligations administratives
+                  sans avoir besoin d’un DRH à temps plein.
+                </p>
+              </article>
+            </div>
+          </div>
+
+          <!-- VALUES -->
+          <div class="approach__values">
+            <div class="value">
+              <img
+                class="icon-thick"
+                src="Assets/Images/home_icons/edit.svg"
+                alt=""
+              />
+              <span>Rendus concrets</span>
+            </div>
+
+            <div class="value">
+              <img
+                class="icon-thick"
+                src="Assets/Images/home_icons/shield.svg"
+                alt=""
+              />
+              <span>Respect de vos choix</span>
+            </div>
+
+            <div class="value">
+              <img
+                class="icon-thick"
+                src="Assets/Images/home_icons/padlock.svg"
+                alt=""
+              />
+              <span>Discrétion</span>
+            </div>
+
+            <div class="value">
+              <img
+                class="icon-thick"
+                src="Assets/Images/home_icons/chatting.svg"
+                alt=""
+              />
+              <span>Communication</span>
+            </div>
+
+            <div class="value">
+              <img
+                class="icon-thick"
+                src="Assets/Images/home_icons/star.svg"
+                alt=""
+              />
+              <span>Qualité de service</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <svg viewBox="0 0 1440 140" preserveAspectRatio="none" focusable="false">
+        <path
+          d="M0 56C150 95 280 120 430 111C610 99 732 39 900 30C1110 18 1260 74 1440 52V140H0V56Z"
+          fill="#ec542f"
+          transform="scale(1,-1) translate(0,-140)"
+        />
+      </svg>
+      <section class="testimonials__section">
+        <div class="container testimonials__box">
+          <header class="testimonials__header">
+            <h2>Ils nous font confiance</h2>
+            <p>Témoignages de clients</p>
+          </header>
+
+          <div class="testimonials__carousel">
+            <button
+              class="testimonials__nav testimonials__nav--prev"
+              aria-label="Témoignage précédent"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+
+            <div class="testimonials__content">
+              <div class="testimonials__avatar">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </div>
+
+              <div class="testimonials__stars" id="testimonial-stars"></div>
+
+              <p class="testimonials__text" id="testimonial-text"></p>
+
+              <p class="testimonials__author" id="testimonial-author"></p>
+              <p class="testimonials__role" id="testimonial-role"></p>
+            </div>
+
+            <button
+              class="testimonials__nav testimonials__nav--next"
+              aria-label="Témoignage suivant"
+            >
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+      <section class="cta__section">
+        <div class="container cta__container">
+          <div class="cta__box">
+            <h2 class="cta__title">
+              Donnez un nouvel élan à votre entreprise dès aujourd'hui.
+            </h2>
+
+            <p class="cta__text">
+              Parlons de vos enjeux RH et stratégiques lors d'un premier
+              échange. Un regard extérieur pour débloquer votre potentiel.
+            </p>
+
+            <div class="cta__actions">
+              <a class="button button--outline" href="contact.html"
+                >Nous contacter</a
+              >
+              <a
+                class="button button--outline"
+                href="https://calendly.com/volcanupsolutions/un-echange-telephonique"
+                >Prendre RDV</a
+              >
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -53,5 +262,6 @@
     <div id="footer-slot"></div>
 
     <script src="js/main.js"></script>
+    <script src="js/testimonials.js"></script>
   </body>
 </html>
