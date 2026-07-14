@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/base/variables.css" />
     <link rel="stylesheet" href="css/composants/navbar.css" />
     <link rel="stylesheet" href="css/composants/footer.css" />
-    <link rel="stylesheet" href="css/pages/main.css" />
+    <link rel="stylesheet" href="css/pages/index.css" />
   </head>
 
   <body>
@@ -167,68 +167,20 @@
           transform="scale(1,-1) translate(0,-140)"
         />
       </svg>
-      <section class="testimonials__section">
-        <div class="container testimonials__box">
-          <header class="testimonials__header">
+      <section class="clients__section" id="clients">
+        <div class="container clients__box">
+          <header class="clients__header">
             <h2>Ils nous font confiance</h2>
-            <p>Témoignages de clients</p>
+            <p>Quelques partenaires</p>
           </header>
 
-          <div class="testimonials__carousel">
-            <button
-              class="testimonials__nav testimonials__nav--prev"
-              aria-label="Témoignage précédent"
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M15 18l-6-6 6-6" />
-              </svg>
-            </button>
-
-            <div class="testimonials__content">
-              <div class="testimonials__avatar">
-                <svg
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                  <circle cx="12" cy="7" r="4" />
-                </svg>
-              </div>
-
-              <div class="testimonials__stars" id="testimonial-stars"></div>
-
-              <p class="testimonials__text" id="testimonial-text"></p>
-
-              <p class="testimonials__author" id="testimonial-author"></p>
-              <p class="testimonials__role" id="testimonial-role"></p>
-            </div>
-
-            <button
-              class="testimonials__nav testimonials__nav--next"
-              aria-label="Témoignage suivant"
-            >
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path d="M9 18l6-6-6-6" />
-              </svg>
-            </button>
+          <div class="clients-grid" role="list">
+            <div class="clients-item" role="listitem"><img src="Assets/Images/Images Prestations/Images clients/logo-maison-des-formateurs.webp" alt="Maison des Formateurs" /></div>
+            <div class="clients-item" role="listitem"><img src="Assets/Images/Images Prestations/Images clients/logo-informatique63.webp" alt="Informatique 63" /></div>
+            <div class="clients-item" role="listitem"><img src="Assets/Images/Images Prestations/Images clients/itarvernel.webp" alt="Itar Vernel" /></div>
+            <div class="clients-item" role="listitem"><img src="Assets/Images/Images Prestations/Images clients/coop-gelee-royale-francaise.webp" alt="Gélée Royale Française" /></div>
+            <div class="clients-item" role="listitem"><img src="Assets/Images/Images Prestations/Images clients/camping-herbelon.webp" alt="Camping Herbelon" /></div>
+            <div class="clients-item" role="listitem"><img src="Assets/Images/Images Prestations/Images clients/table-campagnard.webp" alt="Table Campagnard" /></div>
           </div>
         </div>
       </section>
@@ -262,6 +214,5 @@
     <div id="footer-slot"></div>
 
     <script src="js/main.js"></script>
-    <script src="js/testimonials.js"></script>
   </body>
 </html>
