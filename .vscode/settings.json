@@ -1,0 +1,8 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "/^cd Backend; npx prisma db push; npm run prisma:seed$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}
