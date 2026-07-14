@@ -203,21 +203,21 @@
 	background: #f7f7f7;
 }
 
-<<<<<<< Updated upstream
+
 .actualites-hero {
 	padding-block: clamp(4rem, 8vw, 7rem);
 	padding-inline: var(--space-section-x);
 	border-top: 1px solid rgba(31, 41, 55, 0.12);
 	border-bottom: 1px solid rgba(31, 41, 55, 0.12);
 	background-color: #f7f7f7;
-=======
+}
 
 
-/* ===== CTA ===== */
+
 
 .cta__section {
   background: var(--color-white);
->>>>>>> Stashed changes
+
 }
 
 .actualites-hero__inner {
