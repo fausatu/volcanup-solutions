@@ -5,7 +5,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 async function main() {
-  const email = (process.env.ADMIN_SEED_EMAIL || "admin@volcanup.fr").toLowerCase();
+  const email = (process.env.ADMIN_SEED_EMAIL || "admin@volcanupsolutions.fr").toLowerCase();
   const plainPassword = process.env.ADMIN_SEED_PASSWORD || "admin12345";
   const passwordHash = await bcrypt.hash(plainPassword, 10);
 
