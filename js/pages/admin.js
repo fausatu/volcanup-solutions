@@ -60,7 +60,17 @@ async function requestJson(path, options = {}) {
   });
 
   const text = await response.text();
-  const data = text ? JSON.parse(text) : null;
+  let data = null;
+
+  if (text) {
+    const contentType = response.headers.get("content-type") || "";
+
+    if (contentType.includes("application/json")) {
+      data = JSON.parse(text);
+    } else {
+      data = { message: text.trim() };
+    }
+  }
 
   if (!response.ok) {
     const message = data?.message || "Erreur API";
