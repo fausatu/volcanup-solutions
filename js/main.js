@@ -125,8 +125,14 @@ async function injectFooter() {
 	}
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function initPageScripts() {
 	injectNavbar();
 	injectFooter();
 	setupHeroSectionScrollLinks();
-});
+}
+
+if ("requestIdleCallback" in window) {
+	requestIdleCallback(initPageScripts, { timeout: 2000 });
+} else {
+	window.addEventListener("load", initPageScripts);
+}
