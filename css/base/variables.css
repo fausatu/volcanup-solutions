@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600;700&display=swap");
+/* Google font loaded from index.html to reduce layout shifts and avoid CSS import blocking. */
 
 :root {
 	/* ------------------------------------------------------------------------ */
