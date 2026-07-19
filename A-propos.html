@@ -5,12 +5,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content="Découvrez l'histoire, l'expertise et l'accompagnement RH sur mesure de Volcan'up Solutions pour les TPE-PME." />
 		<title>A propos - Volcan'up Solutions</title>
-		<link rel="stylesheet" href="css/base/reset.css" />
-		<link rel="stylesheet" href="css/base/variables.css" />
-		<link rel="stylesheet" href="css/composants/navbar.css" />
-		<link rel="stylesheet" href="css/composants/footer.css" />
-		<link rel="stylesheet" href="css/pages/main.css" />
-		<link rel="stylesheet" href="css/pages/a-propos.css" />
+		<link rel="preload" href="css/base/reset.css" as="style" onload="this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="css/base/reset.css" /></noscript>
+		<link rel="preload" href="css/base/variables.css" as="style" onload="this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="css/base/variables.css" /></noscript>
+		<link rel="preload" href="css/composants/navbar.css" as="style" onload="this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="css/composants/navbar.css" /></noscript>
+		<link rel="preload" href="css/composants/footer.css" as="style" onload="this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="css/composants/footer.css" /></noscript>
+		<link rel="preload" href="css/pages/main.css" as="style" onload="this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="css/pages/main.css" /></noscript>
+		<link rel="preload" href="css/pages/a-propos.css" as="style" onload="this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="css/pages/a-propos.css" /></noscript>
 	</head>
 	<body>
 		<div id="navbar-slot"></div>
@@ -41,6 +47,10 @@
 							<img
 								class="about-intro__image"
 								src="Assets/Images/Images A propos/beatrice-boillon-fondatrice-volcanup-solutions-540.webp"
+								srcset="Assets/Images/Images A propos/beatrice-boillon-fondatrice-volcanup-solutions-320.webp 320w, Assets/Images/Images A propos/beatrice-boillon-fondatrice-volcanup-solutions-540.webp 540w"
+								sizes="(max-width: 62rem) 100vw, 540px"
+								width="540" height="405"
+								loading="eager" fetchpriority="high"
 								alt="Portrait de Béatrice Boilon"
 							/>
 							<figcaption class="about-intro__caption">Béatrice Boilon, fondatrice</figcaption>
@@ -279,6 +289,6 @@
 
 		<div id="footer-slot"></div>
 
-		<script src="js/main.js"></script>
+		<script src="js/main.js" defer></script>
 	</body>
 </html>

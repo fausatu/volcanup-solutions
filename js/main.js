@@ -29,7 +29,7 @@ async function injectComponent(slotId, componentPath) {
 	}
 
 	const resolvedPath = slot.dataset.component || componentPath;
-	const response = await fetch(resolvedPath, { cache: "no-store" });
+	const response = await fetch(resolvedPath);
 	if (!response.ok) {
 		throw new Error(`Impossible de charger ${resolvedPath}`);
 	}
@@ -131,8 +131,34 @@ function initPageScripts() {
 	setupHeroSectionScrollLinks();
 }
 
+function runAfterLCP(callback, fallbackMs = 2500) {
+	let called = false;
+	try {
+		const po = new PerformanceObserver((list) => {
+			if (called) return;
+			const entries = list.getEntries();
+			if (entries && entries.length) {
+				called = true;
+				try { po.disconnect(); } catch (e) {}
+				callback();
+			}
+		});
+		po.observe({ type: 'largest-contentful-paint', buffered: true });
+	} catch (e) {
+		// PerformanceObserver for LCP not supported
+	}
+
+	// Fallback in case LCP isn't reported quickly
+	setTimeout(() => {
+		if (!called) {
+			called = true;
+			callback();
+		}
+	}, fallbackMs);
+}
+
 if ("requestIdleCallback" in window) {
-	requestIdleCallback(initPageScripts, { timeout: 2000 });
+	requestIdleCallback(() => runAfterLCP(initPageScripts), { timeout: 2000 });
 } else {
-	window.addEventListener("load", initPageScripts);
+	window.addEventListener("load", () => runAfterLCP(initPageScripts));
 }

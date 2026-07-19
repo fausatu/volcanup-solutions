@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Contactez Volcan'up Solutions pour un accompagnement RH, recrutement et stratégie d'entreprise adapté aux TPE et PME." />
     <title>Contact - Volcan'up Solutions</title>
-    <link rel="stylesheet" href="css/base/reset.css" />
-    <link rel="stylesheet" href="css/base/variables.css" />
-    <link rel="stylesheet" href="css/composants/navbar.css" />
-    <link rel="stylesheet" href="css/composants/footer.css" />
-    <link rel="stylesheet" href="css/pages/main.css" />
-    <link rel="stylesheet" href="css/pages/contact.css" />
+    <link rel="preload" href="css/base/reset.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/base/reset.css" /></noscript>
+    <link rel="preload" href="css/base/variables.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/base/variables.css" /></noscript>
+    <link rel="preload" href="css/composants/navbar.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/composants/navbar.css" /></noscript>
+    <link rel="preload" href="css/composants/footer.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/composants/footer.css" /></noscript>
+    <link rel="preload" href="css/pages/main.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/pages/main.css" /></noscript>
+    <link rel="preload" href="css/pages/contact.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/pages/contact.css" /></noscript>
   </head>
   <body>
     <div id="navbar-slot"></div>
@@ -151,6 +157,6 @@
 
     <div id="footer-slot"></div>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
   </body>
 </html>
