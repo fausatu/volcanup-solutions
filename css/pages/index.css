@@ -17,29 +17,161 @@
   margin-bottom: 1.5rem;
 }
 
-.clients-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.25rem 3.5rem;
-  align-items: center;
-  justify-content: center;
+.clients-carousel-wrapper {
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  gap: 1rem;
 }
 
-.clients-item {
+.clients-carousel {
+  display: flex;
+  min-width: max-content;
+  gap: 1rem;
+  align-items: center;
+  animation: clients-scroll 60s linear infinite;
+  justify-content: flex-start;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: rgba(248, 248, 248, 0.95);
+  color: #1f2937;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.clients-carousel--row2 {
+  animation-direction: reverse;
+}
+
+.clients-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem;
-  transition: transform 220ms var(--transition-fast), filter 220ms var(--transition-fast), opacity 220ms var(--transition-fast);
+  padding: 0.8rem 1.2rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
 }
 
-.clients-item img {
-  width: 160px;
-  height: auto;
-  object-fit: contain;
-  filter: grayscale(0.15) contrast(0.95);
-  opacity: 0.95;
-  display: block;
+.clients-badge--maison-formateurs {
+  background: #f15a24;
+  color: #fff;
+}
+
+.clients-badge--informatique-63 {
+  background: #1b4f9d;
+  color: #fff;
+}
+
+.clients-badge--itar-vernel {
+  background: #30323e;
+  color: #fff;
+}
+
+.clients-badge--gelee-royale {
+  background: #d8a54a;
+  color: #111;
+}
+
+.clients-badge--camping-herbelon {
+  background: #2f7a4c;
+  color: #fff;
+}
+
+.clients-badge--table-campagnard {
+  background: #8c5d32;
+  color: #fff;
+}
+
+.clients-badge--bergerat-monnoyeur,
+.clients-badge--fm-logistic,
+.clients-badge--boulanger {
+  background: #f05a22;
+  color: #fff;
+}
+
+.clients-badge--fnac-darty {
+  background: #f47c20;
+  color: #111;
+}
+
+.clients-badge--carrefour {
+  background: #ed1c24;
+  color: #fff;
+}
+
+.clients-badge--caisse-epargne {
+  background: #e60000;
+  color: #fff;
+}
+
+.clients-badge--kbane {
+  background: #6c3b7d;
+  color: #fff;
+}
+
+.clients-badge--logidis {
+  background: #1b7c82;
+  color: #fff;
+}
+
+.clients-badge--mapa {
+  background: #0f3a74;
+  color: #fff;
+}
+
+.clients-badge--yves-rocher {
+  background: #2f6e3d;
+  color: #fff;
+}
+
+.clients-badge--ceme {
+  background: #0a3b6f;
+  color: #fff;
+}
+
+.clients-badge--diadem {
+  background: #7d3f95;
+  color: #fff;
+}
+
+.clients-badge--zorba {
+  background: #13888d;
+  color: #fff;
+}
+
+.clients-badge--xpo {
+  background: #276527;
+  color: #fff;
+}
+
+@keyframes clients-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.clients__box {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 2.5rem 1.25rem;
+  max-width: var(--container-max-width);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+}
+
+.clients__header {
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .clients-item:hover,
