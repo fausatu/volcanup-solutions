@@ -1,0 +1,56 @@
+/* Clients section styles (index) */
+.clients__box {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 2.5rem 1.25rem;
+  max-width: var(--container-max-width);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+}
+
+.clients__header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.clients-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.25rem 3.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.clients-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  transition: transform 220ms var(--transition-fast), filter 220ms var(--transition-fast), opacity 220ms var(--transition-fast);
+}
+
+.clients-item img {
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(0.15) contrast(0.95);
+  opacity: 0.95;
+  display: block;
+}
+
+.clients-item:hover,
+.clients-item:focus {
+  transform: translateY(-6px) scale(1.06);
+  filter: none;
+  opacity: 1;
+}
+
+@media (max-width: 62rem) {
+  .clients-item img { width: 120px; }
+}
+
+@media (max-width: 30rem) {
+  .clients-item img { width: 100px; }
+  .clients__box { padding: 1.25rem; }
+}
