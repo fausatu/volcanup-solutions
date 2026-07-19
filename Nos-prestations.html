@@ -9,14 +9,126 @@
 		<link rel="stylesheet" href="css/composants/navbar.css" />
 		<link rel="stylesheet" href="css/composants/footer.css" />
 		<link rel="stylesheet" href="css/pages/main.css" />
+		<link rel="stylesheet" href="css/pages/prestations.css" />
 	</head>
 	<body>
 		<div id="navbar-slot"></div>
 
-		<main class="page-shell">
-			<section class="section">
-				<div class="container">
-					<h1>Nos prestations</h1>
+		<main class="page-shell page-shell--services">
+			<section class="services-hero" aria-labelledby="services-hero-title">
+				<div class="container services-hero__inner">
+					<p class="services-hero__eyebrow">Nos prestations</p>
+					<h1 id="services-hero-title" class="services-hero__title">Une stratégie à la carte</h1>
+					<p class="services-hero__text">
+						Prestations personnalisées pour TPE, artisans et PME de moins de 50 salariés.
+						Volcan'Up Solutions vous accompagne à chaque étape.
+					</p>
+					<ul class="services-hero__tags" aria-label="Types d'entreprises accompagnees">
+						<li>TPE / PME</li>
+						<li>Artisans</li>
+						<li>A la carte</li>
+					</ul>
+					<div class="services-hero__actions">
+						<a class="button button--primary" href="#services-recruitment-badge">Section Recrutement</a>
+						<a class="button button--ghost" href="#services-rh-temps-partage">RH en temps partagé</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="services-recruitment-intro" aria-labelledby="services-recruitment-title">
+				<div class="container services-recruitment-intro__inner">
+					<p id="services-recruitment-badge" class="services-recruitment-intro__eyebrow">Recrutement</p>
+					<div class="services-recruitment-intro__layout">
+						<div class="services-recruitment-intro__content">
+							<h2 id="services-recruitment-title" class="services-recruitment-intro__title">
+								Transformez votre recrutement en un instant plaisant
+							</h2>
+							<p class="services-recruitment-intro__subtitle">Grâce à une stratégie efficace</p>
+							<p class="services-recruitment-intro__text">
+								Volcan'Up Solutions est à vos cotés quelle que soit la prestation choisie. En plaçant
+								l'humain au coeur de toutes les prestations, une aide adaptablée à votre projet sera mise en œuvre.
+							
+							</p>
+							<ul class="services-recruitment-intro__keywords" aria-label="Axes d'accompagnement">
+								<li>Stratégie</li>
+								<li>processus</li>
+								<li>Organisation</li>
+								<li>Accompagnement</li>
+							</ul>
+						</div>
+						<figure class="services-recruitment-intro__visual">
+							<img
+								class="services-recruitment-intro__image"
+								src="Assets/Images/Images Prestations/Images recrutement/recrutez-autrement.webp"
+								alt="Equipe en atelier de recrutement"
+							/>
+						</figure>
+					</div>
+				</div>
+			</section>
+
+			<section class="services-recruitment-offers" id="services-offres" aria-labelledby="services-offers-title">
+				<div class="container services-recruitment-offers__inner">
+					<h2 id="services-offers-title" class="services-recruitment-offers__title">Prestations recrutement</h2>
+
+					<div class="services-recruitment-offers__list" role="list">
+						<article class="services-offer-card" role="listitem">
+							<div class="services-offer-card__meta">
+								<h3>Diffusion d'annonces + processus</h3>
+								<p>Sur devis</p>
+							</div>
+							<ul class="services-offer-card__items">
+								<li>Diffusion sur plusieurs jobboards</li>
+								<li>Sourcing et tri des candidatures</li>
+								<li>Suivi des réponses aux candidats</li>
+								<li>Option: rédaction  fiche de poste et call collaboratif</li>
+							</ul>
+						</article>
+
+						<article class="services-offer-card" role="listitem">
+							<div class="services-offer-card__meta">
+								<h3>A la carte</h3>
+								<p>Sur devis</p>
+							</div>
+							<ul class="services-offer-card__items">
+								<li>Étude du profil suivant CV</li>
+								<li>Entretien décisif avant embauche</li>
+								<li>Suivi intégration nouvelle recrue</li>
+								<li>Aide livret d'accueil + période essai</li>
+							</ul>
+						</article>
+
+						<article class="services-offer-card" role="listitem">
+							<div class="services-offer-card__meta">
+								<h3>Campagne de recrutement</h3>
+								<p>Sur devis</p>
+							</div>
+							<ul class="services-offer-card__items">
+								<li>Définition des besoins</li>
+								<li>Diffusion annonces emploi</li>
+								<li>Sourcing / tri / sélection / entretiens</li>
+								<li>Accompagnement aux événements  emploi</li>
+							</ul>
+						</article>
+
+						<article class="services-offer-card" role="listitem">
+							<div class="services-offer-card__meta">
+								<h3>Recrutement "Global"</h3>
+								<p>Sur devis</p>
+							</div>
+							<ul class="services-offer-card__items">
+								<li>Rédaction fiche de poste</li>
+								<li>dépôt d'annonce + sourcing</li>
+								<li>Tri / sélection / entretiens de recrutement</li>
+								<li>Suivi intégration + livret accueil</li>
+							</ul>
+						</article>
+					</div>
+				</div>
+				<div class="services-recruitment-offers__wave" aria-hidden="true">
+					<svg viewBox="0 0 1440 140" preserveAspectRatio="none" focusable="false">
+						<path d="M0 56C150 95 280 120 430 111C610 99 732 39 900 30C1110 18 1260 74 1440 52V140H0V56Z" fill="#ec542f" />
+					</svg>
 				</div>
 			</section>
 		</main>
