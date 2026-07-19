@@ -20,22 +20,29 @@
 .clients-carousel-wrapper {
   overflow: hidden;
   position: relative;
+  display: grid;
+  gap: 1rem;
 }
 
 .clients-carousel {
-  display: inline-flex;
+  display: flex;
+  min-width: max-content;
   gap: 1rem;
   align-items: center;
-  animation: clients-scroll 50s linear infinite;
-  justify-content: center;
-  padding: 0.7rem 1rem;
+  animation: clients-scroll 60s linear infinite;
+  justify-content: flex-start;
+  padding: 0.75rem 1rem;
   border-radius: 999px;
-  background: #f8f8f8;
+  background: rgba(248, 248, 248, 0.95);
   color: #1f2937;
   font-size: 0.9rem;
   font-weight: 600;
   white-space: nowrap;
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.clients-carousel--row2 {
+  animation-direction: reverse;
 }
 
 .clients-badge {
