@@ -169,6 +169,8 @@ function setupActualitesPage() {
 		allButton.className = "news-pill";
 		allButton.dataset.category = "all";
 		allButton.textContent = "Tout";
+		allButton.setAttribute("role", "tab");
+		allButton.setAttribute("aria-selected", "true");
 		filtersContainer.appendChild(allButton);
 
 		categories.forEach((slug) => {
@@ -177,6 +179,8 @@ function setupActualitesPage() {
 			button.className = "news-pill";
 			button.dataset.category = slug;
 			button.textContent = labels.get(slug) || slug;
+			button.setAttribute("role", "tab");
+			button.setAttribute("aria-selected", "false");
 			filtersContainer.appendChild(button);
 		});
 
@@ -254,7 +258,14 @@ function setupActualitesPage() {
 		});
 	}
 
-	window.addEventListener("resize", render);
+	// Debounce window resize to avoid frequent reflows
+	let _actualitesResizeTimeout;
+	window.addEventListener("resize", () => {
+		if (_actualitesResizeTimeout) clearTimeout(_actualitesResizeTimeout);
+		_actualitesResizeTimeout = setTimeout(() => {
+			render();
+		}, 150);
+	});
 
 	fetchArticlesFromApi()
 		.then((apiItems) => {
