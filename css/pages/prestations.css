@@ -33,20 +33,19 @@
 }
 
 .services-hero__eyebrow {
-  margin: 0;
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 2rem;
-  padding: 0.25rem 0.95rem;
-  border-radius: var(--radius-pill);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  padding: 0.5rem 1.15rem;
+  border: 1.5px solid #111;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
   color: var(--color-primary);
-  background: rgba(236, 84, 47, 0.12);
-  border: 1px solid rgba(236, 84, 47, 0.32);
+  background: var(--color-white);
+  letter-spacing: 0.08em;
+  margin-top: 1.8rem;
+  margin-bottom: 1.5rem;
+  transform: rotate(-2deg);
+  box-shadow: none;
 }
 
 .services-hero__title {
@@ -103,12 +102,19 @@
   line-height: 1;
   min-height: 3rem;
   padding-inline: clamp(var(--space-5), 2.6vw, var(--space-8));
+  border-radius: 999px;
+  border: 1.5px solid var(--color-primary);
+  box-shadow: none;
+}
+
+.services-hero__actions .button--primary {
+  background: var(--color-primary);
+  color: var(--color-white);
 }
 
 .services-hero__actions .button--ghost {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(37, 99, 235, 0.45);
-  color: #111827;
+  background: var(--color-white);
+  color: var(--color-primary);
 }
 
 .services-hero__media {
@@ -722,11 +728,12 @@
 .services-rh-cta__button {
   display: inline-block;
   padding: 14px 32px;
-  border: 2px solid #ffffff;
-  border-radius: 10px;
-  color: #ffffff;
+  border: 1.5px solid #ffffff;
+  border-radius: 999px;
+  color: var(--color-primary);
   font-weight: 700;
   font-size: 0.95rem;
+  background: #ffffff;
   text-decoration: none;
   transition:
     background 0.2s ease,
@@ -736,7 +743,7 @@
 .services-rh-cta__button:hover,
 .services-rh-cta__button:focus-visible {
   background: #ffffff;
-  color: var(--rh-orange);
+  color: var(--color-primary);
 }
 
 @media (max-width: 560px) {
