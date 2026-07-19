@@ -1,41 +1,357 @@
 <!doctype html>
 <html lang="fr">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Nos prestations - Volcan'up Solutions</title>
-		<link rel="stylesheet" href="css/base/reset.css" />
-		<link rel="stylesheet" href="css/base/variables.css" />
-		<link rel="stylesheet" href="css/composants/navbar.css" />
-		<link rel="stylesheet" href="css/composants/footer.css" />
-		<link rel="stylesheet" href="css/pages/main.css" />
-	</head>
-	<body>
-		<div id="navbar-slot"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nos prestations - Volcan'up Solutions</title>
+    <link rel="stylesheet" href="css/base/reset.css" />
+    <link rel="stylesheet" href="css/base/variables.css" />
+    <link rel="stylesheet" href="css/composants/navbar.css" />
+    <link rel="stylesheet" href="css/composants/footer.css" />
+    <link rel="stylesheet" href="css/pages/main.css" />
+    <link rel="stylesheet" href="css/pages/prestations.css" />
+  </head>
+  <body>
+    <div id="navbar-slot"></div>
 
-		<main class="page-shell page-shell--services">
-			<section class="services-hero" aria-labelledby="services-hero-title">
-				<div class="container services-hero__inner">
-					<p class="services-hero__eyebrow">Nos prestations</p>
-					<h1 id="services-hero-title" class="services-hero__title">Une stratégie à la carte</h1>
-					<p class="services-hero__text">
-						Prestations personnalisées pour TPE, artisans et PME de moins de 50 salariés.
-						Volcan'Up Solutions vous accompagne à chaque étape.
-					</p>
-					<ul class="services-hero__tags" aria-label="Types d'entreprises accompagnees">
-						<li>TPE / PME</li>
-						<li>Artisans</li>
-					</ul>
-					<div class="services-hero__actions">
-						<a class="button button--primary" href="#services-offres">Nos Services</a>
-						<a class="button button--ghost" href="contact.html">Contactez-nous</a>
-					</div>
-				</div>
-			</section>
-		</main>
+    <main class="page-shell page-shell--services">
+      <section class="services-hero" aria-labelledby="services-hero-title">
+        <div class="container services-hero__inner">
+          <p class="services-hero__eyebrow">Nos prestations</p>
+          <h1 id="services-hero-title" class="services-hero__title">
+            Une stratégie à la carte
+          </h1>
+          <p class="services-hero__text">
+            Prestations personnalisées pour TPE, artisans et PME de moins de 50
+            salariés. Volcan'Up Solutions vous accompagne à chaque étape.
+          </p>
+          <ul
+            class="services-hero__tags"
+            aria-label="Types d'entreprises accompagnees"
+          >
+            <li>TPE / PME</li>
+            <li>Artisans</li>
+            <li>A la carte</li>
+          </ul>
+          <div class="services-hero__actions">
+            <a class="button button--primary" href="#services-recruitment-badge"
+              >Section Recrutement</a
+            >
+            <a class="button button--ghost" href="#services-rh-temps-partage"
+              >RH en temps partagé</a
+            >
+          </div>
+        </div>
+      </section>
 
-		<div id="footer-slot"></div>
+      <section
+        class="services-recruitment-intro"
+        aria-labelledby="services-recruitment-title"
+      >
+        <div class="container services-recruitment-intro__inner">
+          <p
+            id="services-recruitment-badge"
+            class="services-recruitment-intro__eyebrow"
+          >
+            Recrutement
+          </p>
+          <div class="services-recruitment-intro__layout">
+            <div class="services-recruitment-intro__content">
+              <h2
+                id="services-recruitment-title"
+                class="services-recruitment-intro__title"
+              >
+                Transformez votre recrutement en un instant plaisant !
+              </h2>
+              <p class="services-recruitment-intro__subtitle">
+                Grâce à une stratégie efficace
+              </p>
+              <p class="services-recruitment-intro__text">
+                Volcan'Up Solutions est à vos côtés quelle que soit la
+                prestation choisie. En plaçant l'humain au coeur de toutes les
+                prestations, une aide personnalisée sera mise en oeuvre
+                adaptable à votre projet.
+              </p>
+              <ul
+                class="services-recruitment-intro__keywords"
+                aria-label="Axes d'accompagnement"
+              >
+                <li>Stratégie</li>
+                <li>Processus</li>
+                <li>Organisation</li>
+                <li>Accompagnement</li>
+              </ul>
+            </div>
+            <figure class="services-recruitment-intro__visual">
+              <img
+                class="services-recruitment-intro__image"
+                src="Assets/Images/Images Prestations/Images recrutement/recrutez-autrement.webp"
+                alt="Equipe en atelier de recrutement"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
 
-		<script src="js/main.js"></script>
-	</body>
+      <section
+        class="services-recruitment-offers"
+        id="services-offres"
+        aria-labelledby="services-offers-title"
+      >
+        <div class="services-recruitment-offers__wave services-recruitment-offers__wave--top" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 140"
+            preserveAspectRatio="none"
+            focusable="false"
+          >
+            <path
+              d="M0 56C150 95 280 120 430 111C610 99 732 39 900 30C1110 18 1260 74 1440 52V140H0V56Z"
+              fill="#ec542f"
+              transform="scale(1,-1) translate(0,-140)"
+            />
+          </svg>
+        </div>
+        <div class="container services-recruitment-offers__inner">
+          <h2
+            id="services-offers-title"
+            class="services-recruitment-offers__title"
+          >
+            Prestations recrutement
+          </h2>
+
+
+          <div class="services-recruitment-offers__list" role="list">
+            <article class="services-offer-card" role="listitem">
+              <div class="services-offer-card__meta">
+                <h3>Diffusion d'annonces + processus</h3>
+                <p>Sur devis</p>
+              </div>
+              <ul class="services-offer-card__items">
+                <li>Diffusion sur plusieurs jobboards</li>
+                <li>Sourcing et tri des candidatures</li>
+                <li>Suivi des réponses aux candidats</li>
+                <li>Option: rédaction fiche de poste et call collaboratif</li>
+              </ul>
+            </article>
+
+            <article class="services-offer-card" role="listitem">
+              <div class="services-offer-card__meta">
+                <h3>A la carte</h3>
+                <p>Sur devis</p>
+              </div>
+              <ul class="services-offer-card__items">
+                <li>Étude du profil suivant CV</li>
+                <li>Entretien décisif avant embauche</li>
+                <li>Suivi intégration nouvelle recrue</li>
+                <li>Aide livret d'accueil + période essai</li>
+              </ul>
+            </article>
+
+            <article class="services-offer-card" role="listitem">
+              <div class="services-offer-card__meta">
+                <h3>Campagne de recrutement</h3>
+                <p>Sur devis</p>
+              </div>
+              <ul class="services-offer-card__items">
+                <li>Définition des besoins</li>
+                <li>Diffusion annonces emploi</li>
+                <li>Sourcing / tri / sélection / entretiens</li>
+                <li>Accompagnement aux événements emploi</li>
+              </ul>
+            </article>
+
+            <article class="services-offer-card" role="listitem">
+              <div class="services-offer-card__meta">
+                <h3>Recrutement "Global"</h3>
+                <p>Sur devis</p>
+              </div>
+              <ul class="services-offer-card__items">
+                <li>Rédaction fiche de poste</li>
+                <li>Dépôt d'annonce + sourcing</li>
+                <li>Tri / sélection / entretiens de recrutement</li>
+                <li>Suivi intégration + livret accueil</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+        <div class="services-recruitment-offers__wave" aria-hidden="true">
+          <svg
+            viewBox="0 0 1440 140"
+            preserveAspectRatio="none"
+            focusable="false"
+          >
+            <path
+              d="M0 56C150 95 280 120 430 111C610 99 732 39 900 30C1110 18 1260 74 1440 52V140H0V56Z"
+              fill="#ec542f"
+            />
+          </svg>
+        </div>
+      </section>
+
+      <section
+        class="services-rh"
+        id="services-rh-temps-partage"
+        aria-labelledby="services-rh-title"
+      >
+        <div class="container services-rh__inner">
+          <p class="services-rh__badge">RH en temps partagé</p>
+
+          <div class="services-rh__layout">
+            <div class="services-rh__content">
+              <h2 id="services-rh-title" class="services-rh__title">
+                Ressources Humaines en temps partagé
+              </h2>
+              <p class="services-rh__subtitle">Sans impacter vos coûts</p>
+
+              <p class="services-rh__text">
+                Volcan'Up Solutions vous accompagne tout au long de l'année,
+                quelques heures par semaine ou quelques jours par mois. Un
+                calendrier adapté à vos besoins occasionnels ou ponctuels.
+              </p>
+
+              <ul
+                class="services-rh__keywords"
+                aria-label="Valeurs de l'accompagnement"
+              >
+                <li>Écoute</li>
+                <li>Conseils</li>
+                <li>Conseils</li>
+                <li>Partage</li>
+              </ul>
+            </div>
+
+            <figure class="services-rh__visual">
+              <img
+                class="services-rh__image"
+                src="Assets/Images/Images Prestations/Images Ressources Humaines/accompagnement%20RH.webp"
+                alt="Ressources humaines en temps partagé"
+              />
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="services-rh-highlights"
+        aria-labelledby="services-rh-highlights-title"
+      >
+        <div class="container services-rh-highlights__inner">
+          <h2
+            id="services-rh-highlights-title"
+            class="services-rh-highlights__title"
+          >
+            Diminuez vos contraintes et ameliorez votre strategie RH
+          </h2>
+
+          <div class="services-rh-highlights__list" role="list">
+            <article class="services-rh-card" role="listitem">
+              <span class="services-rh-card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="3"
+                    y="4"
+                    width="18"
+                    height="16"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                  />
+                  <path
+                    d="M7 9h10M7 13h6M7 17h4"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+              <h3 class="services-rh-card__title">
+                Obligations administratives
+              </h3>
+              <p class="services-rh-card__text">
+                Panneau affichage, reglement interieur, visites medicales, fiche
+                d'entreprise, tableaux de bord, preparation reunions,
+                digitalisation, RGPD...
+              </p>
+            </article>
+
+            <article class="services-rh-card" role="listitem">
+              <span class="services-rh-card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M3 17l5-5 4 4 8-9"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M16 6h4v4"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+              <h3 class="services-rh-card__title">Evolution de vos salaries</h3>
+              <p class="services-rh-card__text">
+                Entretiens professionnels, entretiens individuels cibles,
+                developpement des competences, bilan de l'existant et
+                proposition d'amelioration.
+              </p>
+            </article>
+
+            <article class="services-rh-card" role="listitem">
+              <span class="services-rh-card__icon" aria-hidden="true">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4 20V10M11 20V4M18 20v-7"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+              <h3 class="services-rh-card__title">
+                Amelioration de vos projets RH
+              </h3>
+              <p class="services-rh-card__text">
+                Ateliers collaboratifs, ateliers participatifs (QVT),
+                accompagnement a la digitalisation, services administratifs.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="services-rh-cta" aria-labelledby="services-rh-cta-title">
+        <div class="container">
+          <div class="services-rh-cta__panel">
+            <h2 id="services-rh-cta-title" class="services-rh-cta__title">
+              En quete de solutions pour vos Ressources Humaines&nbsp;?
+            </h2>
+            <a class="services-rh-cta__button" href="contact.html"
+              >Prendre rendez vous</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="footer-slot"></div>
+
+    <script src="js/main.js"></script>
+  </body>
 </html>

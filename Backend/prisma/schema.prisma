@@ -17,6 +17,7 @@ enum SocialNetwork {
 model User {
   id           String   @id @default(cuid())
   email        String   @unique
+  username     String?  @unique
   passwordHash String
   role         String   @default("admin")
   createdAt    DateTime @default(now())
