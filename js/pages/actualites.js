@@ -124,6 +124,13 @@ function setupActualitesPage() {
 		return;
 	}
 
+	// Reserve current grid height to avoid layout shift while we fetch and render
+	// remote articles. We'll remove the reservation shortly after render.
+	const initialGridHeight = grid.offsetHeight || 0;
+	if (initialGridHeight) {
+		grid.style.minHeight = `${initialGridHeight}px`;
+	}
+
 	let activeCategory = "all";
 	let currentPage = 1;
 	let items = Array.from(grid.querySelectorAll(".news-card")).map((card, index) => ({
@@ -247,6 +254,17 @@ function setupActualitesPage() {
 		grid.innerHTML = pagedItems.map((item) => createCardMarkup(item)).join("");
 		grid.querySelectorAll(".news-card").forEach((card, index) => {
 			setMediaBackground(card.querySelector(".news-card__media"), pagedItems[index]?.autoImageUrl || null);
+		});
+
+		// Allow layout to stabilise then remove the temporary min-height we set
+		// earlier to prevent a large CLS. Use RAF then a short timeout as a
+		// conservative heuristic for background image loading.
+		requestAnimationFrame(() => {
+			requestAnimationFrame(() => {
+				setTimeout(() => {
+					if (grid && grid.style) grid.style.minHeight = "";
+				}, 350);
+			});
 		});
 
 		renderPagination(totalPages);
