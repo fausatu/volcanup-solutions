@@ -199,30 +199,30 @@
 }
 
 .services-recruitment-intro__keywords {
-  margin: var(--space-2) 0 0;
+  margin: 18px 0 0;
   padding: 0;
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-4);
-  font-size: var(--font-size-xs);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-primary);
+  gap: 32px;
 }
 
 .services-recruitment-intro__keywords li {
   position: relative;
-  padding-right: var(--space-4);
+  padding-left: 18px;
+  font-weight: 700;
+  color: var(--color-primary);
 }
 
-.services-recruitment-intro__keywords li:not(:last-child)::after {
+.services-recruitment-intro__keywords li::before {
   content: "";
   position: absolute;
-  right: var(--space-1);
+  left: 0;
   top: 50%;
-  width: 0.45rem;
-  height: 1px;
-  background: rgba(47, 54, 71, 0.35);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
   transform: translateY(-50%);
 }
 
@@ -532,6 +532,7 @@
     padding: 64px 0;
   }
 
+  .services-recruitment-intro__keywords,
   .services-rh__keywords {
     gap: 20px 28px;
   }
