@@ -5,7 +5,7 @@
 .clients__box {
   position: relative;
   background: #fff;
-  border: 1px solid var(--color-border);
+  border: none;
   border-radius: 16px;
   padding: 2.5rem 1.25rem;
   max-width: var(--container-max-width);
@@ -15,6 +15,17 @@
 .clients__header {
   text-align: center;
   margin-bottom: 1.5rem;
+}
+
+.clients__header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.clients__header p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
 }
 
 .clients-carousel-wrapper {
@@ -162,7 +173,7 @@
 .clients__box {
   position: relative;
   background: #fff;
-  border: 1px solid var(--color-border);
+  border: none;
   border-radius: 16px;
   padding: 2.5rem 1.25rem;
   max-width: var(--container-max-width);
