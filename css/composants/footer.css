@@ -209,3 +209,9 @@
 		gap: 0.5rem;
 	}
 }
+
+/* Reserve space for footer to avoid layout shifts when the footer is injected */
+#footer-slot {
+	display: block;
+	min-height: clamp(8rem, 12vh, 12rem);
+}

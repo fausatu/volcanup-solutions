@@ -14,6 +14,44 @@ async function loadScriptOnce(src) {
 	});
 }
 
+// Rewrite known third-party image URLs to the local proxy endpoint so browsers
+// receive long cache headers from our backend. This runs as early as possible
+// on DOMContentLoaded to reduce cold fetches to third-party hosts.
+function proxyThirdPartyImages() {
+	const HOST = "media.licdn.com";
+	const images = document.querySelectorAll(`img[src*="${HOST}"], img[srcset*="${HOST}"]`);
+	if (!images.length) return;
+
+	images.forEach((img) => {
+		const src = img.getAttribute("src");
+		if (src && src.includes(HOST)) {
+			img.setAttribute("src", "/proxy/image?url=" + encodeURIComponent(src));
+		}
+
+		const srcset = img.getAttribute("srcset");
+		if (srcset && srcset.includes(HOST)) {
+			const newSrcset = srcset
+				.split(",")
+				.map((part) => {
+					const p = part.trim();
+					const [url, descriptor] = p.split(/\s+/);
+					if (url && url.includes(HOST)) {
+						return "/proxy/image?url=" + encodeURIComponent(url) + (descriptor ? " " + descriptor : "");
+					}
+					return p;
+				})
+				.join(", ");
+			img.setAttribute("srcset", newSrcset);
+		}
+	});
+}
+
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", proxyThirdPartyImages, { once: true });
+} else {
+	proxyThirdPartyImages();
+}
+
 function normalizePageName(pathname) {
 	const fileName = pathname.split("/").pop() || "";
 	if (!fileName) {
