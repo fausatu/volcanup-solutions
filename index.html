@@ -24,17 +24,152 @@
     <link rel="preload" href="css/composants/footer.css" as="style" onload="this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="css/composants/footer.css"></noscript>
 
+    <link rel="preload" href="css/pages/main.css" as="style" onload="this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="css/pages/main.css"></noscript>
+
     <link rel="preload" href="css/pages/index.css" as="style" onload="this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="css/pages/index.css"></noscript>
-<!-- Optionnel : précharger l'image hero (640px variant for LCP) -->
-<link rel="preload" as="image" href="Assets/Images/Images Accueil/page-accueil-640.webp">
+
+    <link rel="preload" as="image" href="Assets/Images/Images Accueil/page-accueil-640.webp" type="image/webp"
+      imagesrcset="Assets/Images/Images Accueil/page-accueil-320.webp 320w, Assets/Images/Images Accueil/page-accueil-640.webp 640w, Assets/Images/Images Accueil/page-accueil-1280.webp 1280w"
+      imagesizes="(max-width: 640px) 100vw, 618px">
     <style>
-      /* Critical CSS to reduce layout shift (reserve hero image space, stable font stack, and wave height) */
-      body{font-family:"Atkinson Hyperlegible Next","Atkinson Hyperlegible",'Segoe UI','Helvetica Neue',Arial,sans-serif; -webkit-font-smoothing:antialiased;}
-      .hero-home__media{min-height:348px;}
-      .hero-home__media img{aspect-ratio:16/9; width:100%; height:auto; display:block;}
-      .hero-home__layout{min-height:420px;}
-      main.page-shell > svg{display:block; width:100%; height:140px; min-height:140px;}
+      /* Critical CSS for initial hero render */
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        background: radial-gradient(circle at top left, rgba(236, 84, 47, 0.08), transparent 32%), linear-gradient(180deg, #fffdfa 0%, #ffffff 20%, #fffaf8 100%);
+        color: #1f2937;
+      }
+
+      .page-shell {
+        overflow-x: hidden;
+        min-height: 100vh;
+        background: transparent;
+      }
+
+      .page-shell section {
+        padding: 5.5rem 2rem;
+      }
+
+      .hero-home {
+        padding-block: 4rem;
+      }
+
+      .hero-home__layout {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        max-width: 72rem;
+        margin-inline: auto;
+      }
+
+      .hero-home__content {
+        max-width: 560px;
+      }
+
+      .hero-home__badge {
+        display: inline-flex;
+        padding: 0.5rem 1.15rem;
+        border: 1.5px solid #111;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #b5301e;
+        background: #fff;
+        letter-spacing: 0.08em;
+        margin-bottom: 1.5rem;
+        transform: rotate(-2deg);
+      }
+
+      .hero-home__title {
+        font-size: clamp(2.4rem, 4vw, 3.4rem);
+        font-weight: 800;
+        line-height: 1.12;
+        letter-spacing: -0.01em;
+        margin-bottom: 1.25rem;
+        color: #111;
+      }
+
+      .hero-home__title .accent {
+        color: #ec542f;
+      }
+
+      .hero-home__text {
+        color: #6b7280;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        margin-bottom: 2rem;
+        max-width: 48ch;
+      }
+
+      .hero-home__actions {
+        margin-top: 1.5rem;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .hero-home .button--primary {
+        background: #c13220;
+        color: #fff;
+        padding: 0.95rem 2.25rem;
+        border-radius: 999px;
+        font-weight: 600;
+        border: none;
+        box-shadow: 0 8px 24px rgba(236, 84, 47, 0.25);
+        transition: all 150ms ease;
+      }
+
+      .hero-home__media {
+        background: #fff;
+        border: 1px solid #eee;
+        border-radius: 24px;
+        padding: 14px;
+        max-width: 540px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.07);
+      }
+
+      .hero-home__media img {
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+        display: block;
+        object-fit: cover;
+        aspect-ratio: 16/9;
+      }
+
+      main.page-shell > svg {
+        display: block;
+        width: 100%;
+        height: 140px;
+        min-height: 140px;
+      }
+
+      @media (max-width: 62rem) {
+        .hero-home__layout {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 2.5rem;
+          justify-items: center;
+        }
+
+        .hero-home__content {
+          max-width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .hero-home__media {
+          width: 100%;
+          max-width: 540px;
+          margin-inline: auto;
+        }
+      }
     </style>
   </head>
 
@@ -69,7 +204,7 @@
           <div class="hero-home__media">
             <picture>
               <source type="image/webp" srcset="Assets/Images/Images Accueil/page-accueil-320.webp 320w, Assets/Images/Images Accueil/page-accueil-640.webp 640w, Assets/Images/Images Accueil/page-accueil-1280.webp 1280w" sizes="(max-width: 640px) 100vw, 618px">
-              <img src="Assets/Images/Images Accueil/page-accueil-640.webp" alt="Accompagnement RH" width="618" height="348" style="width:100%;height:auto;display:block;" loading="eager">
+              <img src="Assets/Images/Images Accueil/page-accueil-640.webp" alt="Accompagnement RH" width="618" height="348" style="width:100%;height:auto;display:block;" loading="eager" fetchpriority="high">
             </picture>
           </div>
         </div>
