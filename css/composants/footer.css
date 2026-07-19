@@ -41,7 +41,7 @@
 .site-footer__text {
 	max-width: 18rem;
 	font-size: 0.9375rem;
-	color: var(--color-text-muted);
+	color: var(--color-text);
 	line-height: 1.55;
 }
 
@@ -80,7 +80,7 @@
 }
 
 .site-footer__link--legal {
-	color: rgba(31, 41, 55, 0.6) !important;
+	color: #374151 !important;
 	font-size: 0.8125rem !important;
 }
 

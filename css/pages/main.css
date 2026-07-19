@@ -328,7 +328,7 @@
   border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: #b5301e;
   background: var(--color-white);
   letter-spacing: 0.08em;
   margin-bottom: 1.5rem;
@@ -364,7 +364,7 @@
 }
 
 .hero-home .button--primary {
-  background: var(--color-primary);
+  background: #c13220;
   color: var(--color-white);
   padding: 0.95rem 2.25rem;
   border-radius: var(--radius-pill);
@@ -375,7 +375,7 @@
 }
 
 .hero-home .button--primary:hover {
-  background: var(--color-primary-dark);
+  background: #9d2a1a;
   transform: translateY(-3px);
   box-shadow: 0 12px 28px rgba(236, 84, 47, 0.32);
 }
