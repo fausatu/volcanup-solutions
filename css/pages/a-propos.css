@@ -75,6 +75,9 @@
 	padding: 14px;
 	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.07);
 	display: grid;
+    /* Reserve the layout box to avoid CLS when the image loads */
+    min-inline-size: 18rem;
+    min-height: 0;
 }
 
 .about-intro__image {
@@ -83,6 +86,9 @@
 	border-radius: 16px;
 	object-fit: cover;
 	display: block;
+
+    /* Explicit aspect ratio ensures browser can reserve space before the image loads */
+    aspect-ratio: 540 / 405;
 }
 
 .about-intro__caption {
