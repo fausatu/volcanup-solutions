@@ -69,8 +69,7 @@ function normalizePageName(pathname) {
 	return name.replace(/\.html$/, "");
 }
 
-<<<<<<< Updated upstream
-=======
+
 async function injectComponent(slotId, componentPath) {
 	const slot = document.getElementById(slotId);
 	if (!slot) {
@@ -145,9 +144,9 @@ async function injectNavbar() {
 
 document.addEventListener("DOMContentLoaded", () => {
 	injectNavbar();
-<<<<<<< Updated upstream
+	
 });
-=======
+
 	injectFooter();
 	setupHeroSectionScrollLinks();
 }
