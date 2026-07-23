@@ -144,12 +144,12 @@ async function injectNavbar() {
 
 document.addEventListener("DOMContentLoaded", () => {
 	injectNavbar();
-	
+
 });
 
 	injectFooter();
 	setupHeroSectionScrollLinks();
-}
+
 
 function runAfterLCP(callback, fallbackMs = 2500) {
 	let called = false;
