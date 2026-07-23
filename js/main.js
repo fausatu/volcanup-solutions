@@ -14,6 +14,7 @@ async function loadScriptOnce(src) {
 	});
 }
 
+
 // Rewrite known third-party image URLs to the local proxy endpoint so browsers
 // receive long cache headers from our backend. This runs as early as possible
 // on DOMContentLoaded to reduce cold fetches to third-party hosts.
@@ -52,13 +53,25 @@ if (document.readyState === "loading") {
 	proxyThirdPartyImages();
 }
 
+
+/**
+ * Normalise le nom de page depuis l'URL du navigateur.
+ * Supporte à la fois les URLs locales (avec .html) et les clean URLs Netlify (sans .html).
+ */
+
 function normalizePageName(pathname) {
 	const fileName = pathname.split("/").pop() || "";
 	if (!fileName) {
-		return "index.html";
+		return "index";
 	}
-	return fileName.toLowerCase();
+	// Netlify utilise des "clean URLs" sans .html.
+	// En local, l'URL contient .html.
+	// On retire .html pour comparer des noms de page "propres".
+	const name = fileName.toLowerCase();
+	return name.replace(/\.html$/, "");
 }
+
+
 
 async function injectComponent(slotId, componentPath) {
 	const slot = document.getElementById(slotId);
@@ -76,6 +89,13 @@ async function injectComponent(slotId, componentPath) {
 	return slot;
 }
 
+
+
+/**
+ * Normalise la cible d'un lien de la navbar.
+ * Retire l'extension .html et met en minuscules pour comparer avec normalizePageName().
+ */
+
 function normalizeLinkTarget(href) {
 	if (!href) {
 		return "";
@@ -83,7 +103,8 @@ function normalizeLinkTarget(href) {
 
 	const cleanHref = href.split("#")[0].split("?")[0];
 	const fileName = cleanHref.split("/").pop() || "index.html";
-	return fileName.toLowerCase();
+	const name = fileName.toLowerCase();
+	return name.replace(/\.html$/, "");
 }
 
 function setActiveNavbarLink(root = document) {
@@ -92,8 +113,9 @@ function setActiveNavbarLink(root = document) {
 
 	links.forEach((link) => {
 		const linkTarget = normalizeLinkTarget(link.getAttribute("href"));
-		const isHomeAlias = currentPage === "" || currentPage === "/";
-		const isMatch = linkTarget === currentPage || (isHomeAlias && linkTarget === "index.html");
+		// Si currentPage est vide ou "/", on est sur la page d'accueil (index)
+		const isHome = currentPage === "" || currentPage === "/" || currentPage === "index";
+		const isMatch = linkTarget === currentPage || (isHome && linkTarget === "index");
 		link.classList.toggle("navbar__link--active", isMatch);
 	});
 }
@@ -165,9 +187,18 @@ async function injectFooter() {
 
 function initPageScripts() {
 	injectNavbar();
+
 	injectFooter();
 	setupHeroSectionScrollLinks();
 }
+
+
+
+
+	injectFooter();
+	setupHeroSectionScrollLinks();
+
+
 
 function runAfterLCP(callback, fallbackMs = 2500) {
 	let called = false;
@@ -200,3 +231,6 @@ if ("requestIdleCallback" in window) {
 } else {
 	window.addEventListener("load", () => runAfterLCP(initPageScripts));
 }
+
+
+
