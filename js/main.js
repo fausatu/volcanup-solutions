@@ -14,6 +14,44 @@ async function loadScriptOnce(src) {
 	});
 }
 
+// Rewrite known third-party image URLs to the local proxy endpoint so browsers
+// receive long cache headers from our backend. This runs as early as possible
+// on DOMContentLoaded to reduce cold fetches to third-party hosts.
+function proxyThirdPartyImages() {
+	const HOST = "media.licdn.com";
+	const images = document.querySelectorAll(`img[src*="${HOST}"], img[srcset*="${HOST}"]`);
+	if (!images.length) return;
+
+	images.forEach((img) => {
+		const src = img.getAttribute("src");
+		if (src && src.includes(HOST)) {
+			img.setAttribute("src", "/proxy/image?url=" + encodeURIComponent(src));
+		}
+
+		const srcset = img.getAttribute("srcset");
+		if (srcset && srcset.includes(HOST)) {
+			const newSrcset = srcset
+				.split(",")
+				.map((part) => {
+					const p = part.trim();
+					const [url, descriptor] = p.split(/\s+/);
+					if (url && url.includes(HOST)) {
+						return "/proxy/image?url=" + encodeURIComponent(url) + (descriptor ? " " + descriptor : "");
+					}
+					return p;
+				})
+				.join(", ");
+			img.setAttribute("srcset", newSrcset);
+		}
+	});
+}
+
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", proxyThirdPartyImages, { once: true });
+} else {
+	proxyThirdPartyImages();
+}
+
 function normalizePageName(pathname) {
 	const fileName = pathname.split("/").pop() || "";
 	if (!fileName) {
@@ -29,7 +67,7 @@ async function injectComponent(slotId, componentPath) {
 	}
 
 	const resolvedPath = slot.dataset.component || componentPath;
-	const response = await fetch(resolvedPath, { cache: "no-store" });
+	const response = await fetch(resolvedPath);
 	if (!response.ok) {
 		throw new Error(`Impossible de charger ${resolvedPath}`);
 	}
@@ -131,8 +169,34 @@ function initPageScripts() {
 	setupHeroSectionScrollLinks();
 }
 
+function runAfterLCP(callback, fallbackMs = 2500) {
+	let called = false;
+	try {
+		const po = new PerformanceObserver((list) => {
+			if (called) return;
+			const entries = list.getEntries();
+			if (entries && entries.length) {
+				called = true;
+				try { po.disconnect(); } catch (e) {}
+				callback();
+			}
+		});
+		po.observe({ type: 'largest-contentful-paint', buffered: true });
+	} catch (e) {
+		// PerformanceObserver for LCP not supported
+	}
+
+	// Fallback in case LCP isn't reported quickly
+	setTimeout(() => {
+		if (!called) {
+			called = true;
+			callback();
+		}
+	}, fallbackMs);
+}
+
 if ("requestIdleCallback" in window) {
-	requestIdleCallback(initPageScripts, { timeout: 2000 });
+	requestIdleCallback(() => runAfterLCP(initPageScripts), { timeout: 2000 });
 } else {
-	window.addEventListener("load", initPageScripts);
+	window.addEventListener("load", () => runAfterLCP(initPageScripts));
 }

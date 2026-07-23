@@ -4,9 +4,11 @@
 	/* ------------------------------------------------------------------------ */
 	/* Couleurs principales (demande projet)                                    */
 	/* ------------------------------------------------------------------------ */
-	--color-primary: #ec542f;
-	--color-primary-light: #fdf1ed;
-	--color-primary-dark: #f44336;
+	--color-primary: #c13b23;
+	--color-primary-light: #f8e6df;
+	--color-primary-dark: #9a2e1a;
+	/* darker variant for text-on-light backgrounds when extra contrast is needed */
+	--color-primary-contrast: #8a2b18;
 
 	/* Couleurs neutres de reference */
 	--color-white: #ffffff;

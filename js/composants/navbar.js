@@ -28,6 +28,10 @@ function setupNavbarBurger(root = document) {
 	burger.addEventListener("click", toggleMenu);
 
 	document.addEventListener("click", (event) => {
+		// Avoid expensive DOM checks when menu is closed
+		const isOpen = burger.getAttribute("aria-expanded") === "true";
+		if (!isOpen) return;
+
 		if (window.matchMedia("(max-width: 62rem)").matches) {
 			const clickInsideNavbar = event.target.closest(".navbar");
 			if (!clickInsideNavbar) {
@@ -48,10 +52,15 @@ function setupNavbarBurger(root = document) {
 		}
 	});
 
+	// Debounce resize handler to avoid main-thread churn
+	let resizeTimeout;
 	window.addEventListener("resize", () => {
-		if (!window.matchMedia("(max-width: 62rem)").matches) {
-			closeMenu();
-		}
+		if (resizeTimeout) clearTimeout(resizeTimeout);
+		resizeTimeout = setTimeout(() => {
+			if (!window.matchMedia("(max-width: 62rem)").matches) {
+				closeMenu();
+			}
+		}, 150);
 	});
 
 	burger.dataset.bound = "true";

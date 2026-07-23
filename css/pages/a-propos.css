@@ -75,6 +75,9 @@
 	padding: 14px;
 	box-shadow: 0 20px 50px rgba(0, 0, 0, 0.07);
 	display: grid;
+    /* Reserve the layout box to avoid CLS when the image loads */
+    min-inline-size: 18rem;
+    min-height: 0;
 }
 
 .about-intro__image {
@@ -83,6 +86,9 @@
 	border-radius: 16px;
 	object-fit: cover;
 	display: block;
+
+    /* Explicit aspect ratio ensures browser can reserve space before the image loads */
+    aspect-ratio: 540 / 405;
 }
 
 .about-intro__caption {
@@ -201,7 +207,7 @@
 	margin: 0;
 	font-size: clamp(0.95rem, 1.4vw, 1.02rem);
 	font-weight: var(--font-weight-semibold);
-	color: var(--color-primary);
+	color: var(--color-text);
 }
 
 .about-journey__text {
@@ -266,7 +272,7 @@
 	font-weight: var(--font-weight-semibold);
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
-	color: #ef7a5d;
+	color: var(--color-primary-contrast);
 	border: 1px solid rgba(239, 122, 93, 0.6);
 	background: rgba(255, 255, 255, 0.7);
 }
@@ -462,7 +468,7 @@
 	margin: 0;
 	font-size: clamp(0.98rem, 1.5vw, 1.35rem);
 	line-height: 1.45;
-	color: rgba(255, 255, 255, 0.95);
+	color: var(--color-white);
 }
 
 .about-cta__button {
@@ -472,7 +478,7 @@
 	min-width: 14rem;
 	border-radius: var(--radius-pill);
 	background: #fff;
-	color: var(--color-primary);
+	color: var(--color-primary-contrast);
 	font-size: clamp(0.95rem, 1.3vw, 1.1rem);
 	font-weight: var(--font-weight-semibold);
 	display: inline-flex;
