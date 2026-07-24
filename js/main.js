@@ -158,7 +158,7 @@ function initTarteaucitron() {
 		handleBrowserDNTRequest: false,
 		removeCredit: true,
 		moreInfoLink: true,
-		useExternalCss: false,
+		useExternalCss: true,
 		readmoreLink: "",
 		mandatory: true,
 	});
