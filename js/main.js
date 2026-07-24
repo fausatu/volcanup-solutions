@@ -131,6 +131,49 @@ function initPageScripts() {
 	setupHeroSectionScrollLinks();
 }
 
+/* ===================================================
+   Tarteaucitron – Gestion des cookies (RGPD)
+   =================================================== */
+function initTarteaucitron() {
+	if (typeof tarteaucitron === "undefined") {
+		// Retry if script not loaded yet
+		setTimeout(initTarteaucitron, 200);
+		return;
+	}
+
+	tarteaucitron.init({
+		privacyUrl: "/mentions-legales.html#cookies",
+		hashtag: "#tarteaucitron",
+		cookieName: "tarteaucitron",
+		orientation: "bottom",
+		showAlertSmall: false,
+		cookieslist: true,
+		closePopup: false,
+		showIcon: true,
+		iconPosition: "BottomRight",
+		adblocker: false,
+		DenyAllCta: true,
+		AcceptAllCta: true,
+		highPrivacy: true,
+		handleBrowserDNTRequest: false,
+		removeCredit: true,
+		moreInfoLink: true,
+		useExternalCss: false,
+		readmoreLink: "",
+		mandatory: true,
+	});
+}
+
+/* On lance tarteaucitron dès que possible */
+if (document.readyState === "loading") {
+	document.addEventListener("DOMContentLoaded", initTarteaucitron, { once: true });
+} else {
+	initTarteaucitron();
+}
+
+/* ===================================================
+   Page scripts (navbar, footer, etc.)
+   =================================================== */
 if ("requestIdleCallback" in window) {
 	requestIdleCallback(initPageScripts, { timeout: 2000 });
 } else {
