@@ -146,7 +146,7 @@ function initTarteaucitron() {
 		hashtag: "#tarteaucitron",
 		cookieName: "tarteaucitron",
 		orientation: "bottom",
-		showAlertSmall: false,
+		showAlertSmall: true,
 		cookieslist: true,
 		closePopup: false,
 		showIcon: true,
