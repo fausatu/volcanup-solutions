@@ -142,14 +142,14 @@ function initTarteaucitron() {
 	}
 
 	tarteaucitron.init({
-		privacyUrl: "/mentions-legales.html#cookies",
+		privacyUrl: "/mentions-legales.html",
 		hashtag: "#tarteaucitron",
 		cookieName: "tarteaucitron",
 		orientation: "bottom",
 		showAlertSmall: true,
 		cookieslist: true,
 		closePopup: false,
-		showIcon: true,
+		showIcon: false,
 		iconPosition: "BottomRight",
 		adblocker: false,
 		DenyAllCta: true,
