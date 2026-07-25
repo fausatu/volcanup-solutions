@@ -30,9 +30,11 @@
 
 .about-intro__title {
 	margin: 0;
-	font-size: clamp(1.8rem, 4.3vw, 3rem);
-	line-height: 1;
-	color: var(--color-primary);
+	font-size: clamp(2.4rem, 4vw, 3.4rem);
+	font-weight: 800;
+	letter-spacing: -0.01em;
+	margin-bottom: 1.25rem;
+	color: #111;
 }
 
 .about-intro__grid {
@@ -49,12 +51,16 @@
 	gap: var(--space-5);
 	font-size: clamp(1.04rem, 1.5vw, 1.1rem);
 	line-height: 1.65;
-	color: #334155;
+	color: var(--color-text-muted);
 }
 
 .about-intro__content p {
 	margin: 0;
-	text-wrap: pretty;
+	font-size : 1.05rem;
+	line-height: 1.7;
+    max-width: 100%;
+	margin-bottom: 2rem;
+    overflow-wrap: break-word;
 }
 
 .about-intro__actions {
