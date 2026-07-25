@@ -17,7 +17,7 @@
 }
 
 .page-home > section {
-  padding: 8rem 2.5rem;
+  padding: 5.5rem 2rem;
 }
 
 .about-intro {
@@ -314,7 +314,7 @@
 .hero-home__layout {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
-  gap: 2rem;
+  gap: var(--space-16, 4rem);
   align-items: center;
   max-width: var(--container-max-width);
   margin-inline: auto;
@@ -340,13 +340,13 @@
   width: fit-content;
 }
 .hero-home__title {
-  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-size: clamp(2.4rem, 4vw, 3.4rem);
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.12;
   letter-spacing: -0.01em;
   margin-bottom: 1.25rem;
   color: #111;
-  max-width: 16ch;
+  max-width: 620px;
 }
 
 .hero-home__title .accent {
@@ -374,18 +374,27 @@
   background: #fff;
   border: 1px solid #eee;
   border-radius: 24px;
-  padding: 14px;
-  max-width: 45rem;
+  padding: 8px; /* petit contour blanc */
+  width: 100%;
+  max-width: 540px;
+  aspect-ratio: 4 / 3;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+}
+
+.hero-home__media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .hero-home__media img {
   width: 100%;
-  height: auto;
-  border-radius: 16px;
+  height: 100%;
   display: block;
-  object-fit: cover;
-  aspect-ratio: 16/9;
+  border-radius: 18px;
+  object-fit: cover; /* coupe les côtés/haut pour faire un carré */
+  object-position: center;
 }
 
 .hero-home__layout,
