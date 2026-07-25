@@ -48,22 +48,24 @@
 .services-hero__content {
 	display: grid;
 	gap: var(--space-8);
+	max-width: 560px;
+
 }
 
 .services-hero__title {
 	margin: 0;
-	margin-bottom: var(--space-4);
+	margin-bottom: 1.25rem;
 	font-family: var(--font-family-heading);
 	font-size: clamp(1.9rem, 4.2vw, 2.95rem);
-	font-weight: var(--font-weight-bold);
+	font-weight: 800;
 	line-height: 1.1;
-	letter-spacing: -0.02em;
-	color: var(--color-primary-dark);
+	letter-spacing: -0.01em;
+	color: #111;
 	text-wrap: balance;
 }
 
 .services-hero__text {
-	margin: 0;
+	margin-bottom: 10px;
 	max-width: 46rem;
 	font-size: clamp(0.95rem, 1.3vw, 1.08rem);
 	line-height: 1.55;
@@ -188,8 +190,7 @@
 }
 
 .news-layout {
-	padding: clamp(var(--space-8), 4vw, var(--space-12)) 0 clamp(var(--space-12), 6vw, var(--space-16));
-	background: #f5e8e2;
+	background: white;
 }
 
 .news-layout__inner {
@@ -201,7 +202,7 @@
 .news-layout__filters {
 	display: flex;
 	align-items: center;
-	gap: var(--space-3);
+	gap: var(--space-1);
 	padding: var(--space-3) var(--space-4);
 	background: rgba(255, 255, 255, 0.28);
 	border: 1px solid rgba(31, 41, 55, 0.08);
