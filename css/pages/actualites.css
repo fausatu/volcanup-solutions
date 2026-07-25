@@ -48,6 +48,8 @@
 .services-hero__content {
 	display: grid;
 	gap: var(--space-8);
+	max-width: 560px;
+
 }
 
 .services-hero__title {
