@@ -1,6 +1,5 @@
 .about-intro {
-	padding-top: clamp(var(--space-10), 5vw, var(--space-16));
-	padding-bottom: clamp(var(--space-6), 4vw, var(--space-10));
+	padding-block : calc(var(--space-section-hero-y) * 1.2);
 	scroll-margin-top: calc(var(--navbar-height) + var(--space-3));
 }
 
@@ -37,11 +36,13 @@
 }
 
 .about-intro__grid {
+	max-width : var(--container-max-width);
 	display: grid;
-	grid-template-columns: minmax(0, 1fr) minmax(18rem, 1.05fr);
+	grid-template-columns: 1.1fr 1fr;
 	align-items: center;
-	gap: clamp(var(--space-6), 3vw, var(--space-10));
-}
+	gap: var(--space-16, 4rem);
+	margin-inline: auto;
+}   
 
 .about-intro__content {
 	display: grid;
@@ -82,6 +83,7 @@
 	height: auto;
 	border-radius: 16px;
 	object-fit: cover;
+	object-position: center;
 	display: block;
 }
 
