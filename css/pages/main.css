@@ -21,8 +21,8 @@
 }
 
 .about-intro {
-  padding-top: clamp(var(--space-12), 7vw, var(--space-20));
-  padding-bottom: clamp(var(--space-12), 7vw, var(--space-20));
+	/* padding-top: clamp(var(--space-12), 7vw, var(--space-20));
+	padding-bottom: clamp(var(--space-12), 7vw, var(--space-20)); */
 }
 
 .about-intro__inner {
@@ -64,13 +64,6 @@
   gap: clamp(var(--space-8), 4vw, var(--space-12));
 }
 
-.about-intro__content {
-  display: grid;
-  gap: var(--space-5);
-  font-size: clamp(1.04rem, 1.5vw, 1.1rem);
-  line-height: 1.65;
-  color: #334155;
-}
 
 .about-intro__content p {
   margin: 0;
