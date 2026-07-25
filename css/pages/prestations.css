@@ -385,7 +385,7 @@
 
 .services-offer-card__meta {
   padding: var(--space-4);
-  background: #eef2f8;
+  background: var(--color-primary);
   border-right: 1px solid rgba(236, 84, 47, 0.75);
   display: grid;
   align-content: start;
@@ -396,14 +396,14 @@
   margin: 0;
   font-size: clamp(0.92rem, 1.3vw, 1.02rem);
   line-height: 1.35;
-  color: #253457;
+  color: #fcfdff;
 }
 
 .services-offer-card__meta p {
   margin: 0;
   font-size: 0.8rem;
   font-weight: var(--font-weight-semibold);
-  color: var(--color-primary);
+  color: white;
 }
 
 .services-offer-card__items {
@@ -412,6 +412,7 @@
   list-style: none;
   display: grid;
   gap: 0.45rem;
+  background-color: var(--color-primary-light);
   font-size: 0.82rem;
   line-height: 1.45;
   color: #2f3647;
