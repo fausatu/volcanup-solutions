@@ -123,7 +123,7 @@
   margin-inline: auto;
 }
 
-.services-hero__media img {
+.services-hero__media img, .services-rh__image {
   width: 100%;
   height: auto;
   border-radius: 18px;
@@ -492,11 +492,13 @@
 
 /* Layout deux colonnes */
 .services-rh__layout {
+  max-width: var(--container-max-width);
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1.1fr 1fr;
   align-items: center;
-  gap: 56px;
+  gap: var(--space-16, 4rem);
   width: 100%;
+  margin-inline: auto;
 }
 
 /* Colonne texte */
@@ -570,12 +572,12 @@
   justify-content: center;
 }
 
-.services-rh__image {
-  width: 100%;
+ .services-rh__image {
+  
   height: 100%;
-  object-fit: cover;
-  display: block;
-}
+  
+  
+} 
 
 /* Fallback visuel si pas d'image (placeholder montagne) */
 .services-rh__visual:has(img[src=""]),
