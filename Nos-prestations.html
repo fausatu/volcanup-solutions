@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Découvrez les prestations RH, recrutement et accompagnement stratégique sur mesure proposées par Volcan'up Solutions pour TPE et PME."
+    />
     <title>Nos prestations - Volcan'up Solutions</title>
     <link rel="stylesheet" href="css/base/reset.css" />
     <link rel="stylesheet" href="css/base/variables.css" />
@@ -10,38 +14,54 @@
     <link rel="stylesheet" href="css/composants/footer.css" />
     <link rel="stylesheet" href="css/pages/main.css" />
     <link rel="stylesheet" href="css/pages/prestations.css" />
+    <!-- Tarteaucitron CSS removed -->
   </head>
   <body>
     <div id="navbar-slot"></div>
 
-
     <main class="page-shell page-shell--services">
       <section class="services-hero" aria-labelledby="services-hero-title">
-        <div class="container services-hero__inner">
-          <p class="services-hero__eyebrow">Nos prestations</p>
-          <h1 id="services-hero-title" class="services-hero__title">
-            Une stratégie à la carte
-          </h1>
-          <p class="services-hero__text">
-            Prestations personnalisées pour TPE, artisans et PME de moins de 50
-            salariés. Volcan'Up Solutions vous accompagne à chaque étape.
-          </p>
-          <ul
-            class="services-hero__tags"
-            aria-label="Types d'entreprises accompagnees"
-          >
-            <li>TPE / PME</li>
-            <li>Artisans</li>
-            <li>A la carte</li>
-          </ul>
-          <div class="services-hero__actions">
-            <a class="button button--primary" href="#services-recruitment-badge"
-              >Section Recrutement</a
+        <div class="container services-hero__layout">
+          <div class="services-hero__inner">
+            <p class="services-hero__eyebrow">Nos prestations</p>
+            <h1 id="services-hero-title" class="services-hero__title">
+              Une stratégie à la carte
+            </h1>
+            <p class="services-hero__text">
+              Prestations personnalisées pour TPE, artisans et PME de moins de
+              50 salariés. Volcan'Up Solutions vous accompagne à chaque étape.
+            </p>
+            <ul
+              class="services-hero__tags"
+              aria-label="Types d'entreprises accompagnees"
             >
-            <a class="button button--ghost" href="#services-rh-temps-partage"
-              >RH en temps partagé</a
-            >
+              <li>TPE / PME</li>
+              <li>Artisans</li>
+            </ul>
+            <div class="services-hero__actions">
+              <a
+                class="button button--primary"
+                href="#services-recruitment-badge"
+                >Section Recrutement</a
+              >
+              <a class="button button--ghost" href="#services-rh-temps-partage"
+                >RH en temps partagé</a
+              >
+            </div>
           </div>
+
+          <figure class="services-hero__media">
+            <img
+              src="Assets/Images/Images Prestations/Partenariat_VolcanUP_Solutions.jpg-540.webp"
+              srcset="Assets/Images/Images Prestations/Partenariat_VolcanUP_Solutions.jpg-320.webp 320w, Assets/Images/Images Prestations/Partenariat_VolcanUP_Solutions.jpg-540.webp 540w"
+              sizes="(max-width: 62rem) 100vw, 540px"
+              width="540"
+              height="360"
+              loading="eager"
+              fetchpriority="high"
+              alt="Accompagnement et partenariat RH en entreprise"
+            />
+          </figure>
         </div>
       </section>
 
@@ -86,7 +106,11 @@
             <figure class="services-recruitment-intro__visual">
               <img
                 class="services-recruitment-intro__image"
-                src="Assets/Images/Images Prestations/Images recrutement/recrutez-autrement.webp"
+                src="Assets/Images/Images Prestations/Images recrutement/recrutez-autrement-540.webp"
+                srcset="Assets/Images/Images Prestations/Images recrutement/recrutez-autrement-320.webp 320w, Assets/Images/Images Prestations/Images recrutement/recrutez-autrement-540.webp 540w"
+                sizes="(max-width: 62rem) 100vw, 420px"
+                width="420"
+                height="592"
                 alt="Equipe en atelier de recrutement"
               />
             </figure>
@@ -99,7 +123,10 @@
         id="services-offres"
         aria-labelledby="services-offers-title"
       >
-        <div class="services-recruitment-offers__wave services-recruitment-offers__wave--top" aria-hidden="true">
+        <div
+          class="services-recruitment-offers__wave services-recruitment-offers__wave--top"
+          aria-hidden="true"
+        >
           <svg
             viewBox="0 0 1440 140"
             preserveAspectRatio="none"
@@ -119,7 +146,6 @@
           >
             Prestations recrutement
           </h2>
-
 
           <div class="services-recruitment-offers__list" role="list">
             <article class="services-offer-card" role="listitem">
@@ -224,7 +250,11 @@
             <figure class="services-rh__visual">
               <img
                 class="services-rh__image"
-                src="Assets/Images/Images Prestations/Images Ressources Humaines/accompagnement%20RH.webp"
+                src="Assets/Images/Images Prestations/contrat_conclus_VolcanUP_Solutions.jpg.webp"
+                srcset="Assets/Images/Images Prestations/Images Ressources Humaines/accompagnement RH-64.webp 64w, Assets/Images/Images Prestations/Images Ressources Humaines/accompagnement RH-128.webp 128w"
+                sizes="64px"
+                width="128"
+                height="85"
                 alt="Ressources humaines en temps partagé"
               />
             </figure>
@@ -336,14 +366,15 @@
           </div>
         </div>
       </section>
-
       <section class="services-rh-cta" aria-labelledby="services-rh-cta-title">
         <div class="container">
           <div class="services-rh-cta__panel">
             <h2 id="services-rh-cta-title" class="services-rh-cta__title">
-              En quete de solutions pour vos Ressources Humaines&nbsp;?
+              En quête de solutions pour vos ressources humaines &nbsp;?
             </h2>
-            <a class="services-rh-cta__button" href="contact.html"
+            <a
+              class="button services-rh-cta__button"
+              href="https://calendly.com/volcanupsolutions/un-echange-telephonique"
               >Prendre rendez vous</a
             >
           </div>
@@ -354,5 +385,6 @@
     <div id="footer-slot"></div>
 
     <script src="js/main.js"></script>
+    <!-- Tarteaucitron removed -->
   </body>
 </html>

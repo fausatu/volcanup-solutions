@@ -124,6 +124,13 @@ function setupActualitesPage() {
 		return;
 	}
 
+	// Reserve current grid height to avoid layout shift while we fetch and render
+	// remote articles. We'll remove the reservation shortly after render.
+	const initialGridHeight = grid.offsetHeight || 0;
+	if (initialGridHeight) {
+		grid.style.minHeight = `${initialGridHeight}px`;
+	}
+
 	let activeCategory = "all";
 	let currentPage = 1;
 	let items = Array.from(grid.querySelectorAll(".news-card")).map((card, index) => ({
@@ -169,6 +176,8 @@ function setupActualitesPage() {
 		allButton.className = "news-pill";
 		allButton.dataset.category = "all";
 		allButton.textContent = "Tout";
+		allButton.setAttribute("role", "tab");
+		allButton.setAttribute("aria-selected", "true");
 		filtersContainer.appendChild(allButton);
 
 		categories.forEach((slug) => {
@@ -177,6 +186,8 @@ function setupActualitesPage() {
 			button.className = "news-pill";
 			button.dataset.category = slug;
 			button.textContent = labels.get(slug) || slug;
+			button.setAttribute("role", "tab");
+			button.setAttribute("aria-selected", "false");
 			filtersContainer.appendChild(button);
 		});
 
@@ -245,6 +256,17 @@ function setupActualitesPage() {
 			setMediaBackground(card.querySelector(".news-card__media"), pagedItems[index]?.autoImageUrl || null);
 		});
 
+		// Allow layout to stabilise then remove the temporary min-height we set
+		// earlier to prevent a large CLS. Use RAF then a short timeout as a
+		// conservative heuristic for background image loading.
+		requestAnimationFrame(() => {
+			requestAnimationFrame(() => {
+				setTimeout(() => {
+					if (grid && grid.style) grid.style.minHeight = "";
+				}, 350);
+			});
+		});
+
 		renderPagination(totalPages);
 
 		Array.from(filtersContainer.querySelectorAll(".news-pill")).forEach((button) => {
@@ -254,7 +276,14 @@ function setupActualitesPage() {
 		});
 	}
 
-	window.addEventListener("resize", render);
+	// Debounce window resize to avoid frequent reflows
+	let _actualitesResizeTimeout;
+	window.addEventListener("resize", () => {
+		if (_actualitesResizeTimeout) clearTimeout(_actualitesResizeTimeout);
+		_actualitesResizeTimeout = setTimeout(() => {
+			render();
+		}, 150);
+	});
 
 	fetchArticlesFromApi()
 		.then((apiItems) => {
