@@ -746,8 +746,8 @@
 =========================== */
 
 .expertise-home__card img {
-  width: 45px;
-  height: 45px;
+  width: 65px;
+  height: 65px;
   object-fit: cover;
   border-radius: 12px;
   flex-shrink: 0;
