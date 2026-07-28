@@ -355,7 +355,7 @@
 }
 
 .hero-home__actions {
-  margin-top: 1.5rem;
+  margin-top: 0rem;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
@@ -654,142 +654,165 @@
   }
 }
 
-/* ===========================
-   EXPERTISE HOME
-=========================== */
-/* ==========================
-   EXPERTISE COMPACTE
-========================== */
-
-.expertise-home {
+.page-home > svg:nth-of-type(2) {
   background: #fff;
 }
 
+/* ===========================
+   EXPERTISE HOME
+=========================== */
+
+.expertise-home {
+  background: #fff;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+  margin-top: -3rem;
+}
+
+/* HEADER */
+
 .expertise-home__header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .expertise-home__badge {
   display: inline-flex;
-  padding: 0.45rem 1rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 1rem;
   border-radius: 999px;
   background: #fde8df;
   color: var(--color-primary);
+  font-size: 0.85rem;
   font-weight: 700;
-  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
 }
 
 .expertise-home__header h2 {
-  font-size: 2.4rem;
-  margin-bottom: 0.75rem;
+  margin: 0;
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  line-height: 1.15;
+  font-weight: 800;
+  color: #111;
 }
 
 .expertise-home__header p {
+  margin-top: 0.8rem;
   color: var(--color-text-muted);
 }
 
-/* Grid */
+/* ===========================
+   GRID
+=========================== */
 
 .expertise-home__grid {
   display: grid;
-
   grid-template-columns: repeat(3, minmax(0, 1fr));
-
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
-/* Card */
+/* ===========================
+   CARD
+=========================== */
 
 .expertise-home__card {
   display: flex;
-
   align-items: center;
-
   gap: 1rem;
-
   padding: 1rem;
-
   background: #fff;
-
   border: 1px solid #ececec;
-
   border-radius: 18px;
-
-  transition: 0.3s;
+  min-height: 90px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
+
+/* Hover */
 
 .expertise-home__card:hover {
-  transform: translateY(-4px);
-
+  transform: translateY(-5px);
   border-color: var(--color-primary);
-
-  box-shadow: 0 15px 30px rgba(236, 84, 47, 0.12);
+  box-shadow: 0 15px 35px rgba(236, 84, 47, 0.12);
 }
 
-/* Image */
+/* ===========================
+   IMAGE
+=========================== */
 
-.expertise-home__image {
-  width: 88px;
-
-  height: 88px;
-
-  border-radius: 16px;
-
-  background: #fff5f1;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
+.expertise-home__card img {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 12px;
   flex-shrink: 0;
+  display: block;
 }
 
-.expertise-home__image img {
-  width: 68px;
-
-  height: auto;
-
-  transition: 0.3s;
-}
+/* Animation image */
 
 .expertise-home__card:hover img {
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
-/* Texte */
+/* ===========================
+   TEXTE
+=========================== */
 
-.expertise-home__content h3 {
-  margin: 0 0 0.35rem;
-
-  font-size: 1.05rem;
+.expertise-home__card span {
+  font-size: 1rem;
 
   font-weight: 700;
+
+  color: #111;
 }
 
-.expertise-home__content p {
-  margin: 0;
-
-  font-size: 0.88rem;
-
-  color: var(--color-text-muted);
-
-  line-height: 1.5;
-}
-
-/* Responsive */
+/* ===========================
+   RESPONSIVE TABLETTE
+=========================== */
 
 @media (max-width: 900px) {
+  .expertise-home {
+    margin-top: -2rem;
+  }
+
   .expertise-home__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
+/* ===========================
+   RESPONSIVE MOBILE
+=========================== */
+
 @media (max-width: 600px) {
+  .expertise-home {
+    margin-top: -1rem;
+
+    padding-bottom: 2rem;
+  }
+
+  .expertise-home__header {
+    margin-bottom: 1.5rem;
+  }
+
   .expertise-home__grid {
     grid-template-columns: 1fr;
+  }
+
+  .expertise-home__card {
+    padding: 0.85rem;
+  }
+
+  .expertise-home__card img {
+    width: 60px;
+
+    height: 60px;
   }
 }
 /* ===== TESTIMONIALS ===== */
