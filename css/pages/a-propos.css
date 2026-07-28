@@ -447,7 +447,7 @@
 }
 
 .about-cta {
-	background: #f4f2ef;
+	background: #ffffff;
 	padding-top: clamp(var(--space-8), 5vw, var(--space-14));
 	padding-bottom: clamp(var(--space-12), 7vw, var(--space-20));
 }
