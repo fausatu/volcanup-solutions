@@ -259,14 +259,14 @@
 	z-index: 1;
 	display: grid;
 	justify-items: center;
-	gap: clamp(var(--space-8), 4vw, var(--space-10));
+	gap: clamp(var(--space-8), 4vw, var(--space-12));
 	text-align: center;
 }
 
 .about-why__heading {
 	max-width: 58rem;
 	display: grid;
-	gap: var(--space-3);
+	gap: clamp(var(--space-8), 4vw, var(--space-12));
 	justify-items: center;
 }
 
@@ -286,7 +286,7 @@
 
 .about-why__title {
 	margin: 0;
-	font-size: clamp(2rem, 4.4vw, 3.45rem);
+	font-size: clamp(1.9rem, 4vw, 3.2rem);
 	line-height: 1.1;
 	color: #111;
 }
@@ -357,7 +357,7 @@
 }
 
 .about-expertise {
-	background: #f4f2ef;
+	background: #ffffff;
 	padding-top: clamp(var(--space-10), 6vw, var(--space-16));
 	padding-bottom: clamp(var(--space-10), 6vw, var(--space-16));
 }
