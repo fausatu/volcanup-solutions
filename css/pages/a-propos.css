@@ -114,11 +114,28 @@
 }
 
 .about-journey {
-	background: #f4f2ef;
+	/* background: #f6f4f1;
 	padding-top: clamp(var(--space-12), 7vw, var(--space-20));
 	padding-bottom: clamp(var(--space-12), 7vw, var(--space-20));
 	border-top: 1px solid rgba(31, 41, 55, 0.07);
-	border-bottom: 1px solid rgba(31, 41, 55, 0.07);
+	border-bottom: 1px solid rgba(31, 41, 55, 0.07); */
+  background: #f6f4f1;
+  padding-top: clamp(var(--space-12), 7vw, var(--space-20));
+  padding-bottom: clamp(var(--space-12), 7vw, var(--space-20));
+  border-top: 1px solid rgba(31, 41, 55, 0.07); /* si tu veux garder le haut */
+  border-bottom: none;
+  position: relative
+}
+.about-journey::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 4rem;
+  height: 0.25rem;
+  border-radius: 999px;
+  background: #ec542f;
 }
 
 .about-journey__inner {
