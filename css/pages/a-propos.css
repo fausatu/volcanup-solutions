@@ -445,6 +445,58 @@
 .about-expertise__marquee:hover .about-expertise__rail {
 	animation-play-state: paused;
 }
+.about-expertise__gallery {
+    display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+  max-width: 1100px;
+  margin-inline: auto;
+  align-items: start;
+  justify-items: center;
+  padding-inline: 0.5rem;
+}
+
+.about-expertise__card {
+  width: 100%;
+  max-width: 320px;
+  background: #fff;
+  border: 1px solid #e7e2dc;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.06);
+  display: grid;
+}
+
+.about-expertise__card img {
+    display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+}
+
+.about-expertise__caption {
+  margin: 0;
+  padding: 0.6rem 0.9rem;
+  text-align: center;
+  font-weight: 600;
+  color: #1f2f67;
+  font-size: 0.95rem;
+}
+/* Breakpoints */
+@media (max-width: 62rem) {
+  .about-expertise__gallery {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 48rem) {
+  .about-expertise__gallery {
+    grid-template-columns: 1fr;
+    padding-inline: 0;
+  }
+}
+
 
 .about-cta {
 	background: #ffffff;
