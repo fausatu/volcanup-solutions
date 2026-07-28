@@ -21,7 +21,7 @@
 }
 
 .about-intro {
-	/* padding-top: clamp(var(--space-12), 7vw, var(--space-20));
+  /* padding-top: clamp(var(--space-12), 7vw, var(--space-20));
 	padding-bottom: clamp(var(--space-12), 7vw, var(--space-20)); */
 }
 
@@ -63,7 +63,6 @@
   align-items: center;
   gap: clamp(var(--space-8), 4vw, var(--space-12));
 }
-
 
 .about-intro__content p {
   margin: 0;
@@ -367,7 +366,7 @@
   background: #fff;
   border: 1px solid #eee;
   border-radius: 24px;
-  padding: 8px; /* petit contour blanc */
+  padding: 0.8rem;
   width: 100%;
   max-width: 540px;
   aspect-ratio: 4 / 3;
@@ -431,7 +430,6 @@
 
   .hero-home__media {
     width: 100%;
-
     margin-inline: auto;
   }
 
@@ -502,10 +500,20 @@
 }
 
 .approach__card {
-  border-top: 3px solid var(--color-primary);
-  padding-top: 1.75rem;
+  position: relative;
+  padding: 0 1.5rem;
 }
 
+.approach__card:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  right: -1.5rem;
+  width: 3px;
+  height: 80%;
+  background: var(--color-primary);
+  border-radius: 999px;
+}
 .approach__icon {
   width: 48px;
   height: 48px;
@@ -635,6 +643,14 @@
   .approach__values {
     flex-wrap: wrap;
     justify-content: center;
+  }
+  .approach__card {
+    padding: 1.75rem 0 0;
+    border-top: 3px solid var(--color-primary);
+  }
+
+  .approach__card::after {
+    display: none;
   }
 }
 /* ===== TESTIMONIALS ===== */

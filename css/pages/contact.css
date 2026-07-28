@@ -15,14 +15,18 @@
   max-width: 36rem;
 }
 
+/* =========================
+   BADGE
+========================= */
+
 .contact-showcase__badge {
   display: inline-flex;
   padding: 0.5rem 1.15rem;
-  border: 1.5px solid #111;
+  border: 1.5px solid var(--color-black);
   border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #b5301e;
+  color: var(--color-primary-dark);
   background: var(--color-white);
   letter-spacing: 0.08em;
   margin-bottom: 1.5rem;
@@ -30,6 +34,10 @@
   box-shadow: none;
   width: fit-content;
 }
+
+/* =========================
+   TITRES / TEXTES
+========================= */
 
 .contact-showcase h1 {
   font-size: 3.2rem;
@@ -45,8 +53,12 @@
 .contact-showcase p {
   margin-bottom: 2rem;
   line-height: 1.8;
-  color: #5d6478;
+  color: var(--color-text-muted);
 }
+
+/* =========================
+   INFOS CONTACT
+========================= */
 
 .contact-showcase__infos {
   display: grid;
@@ -66,18 +78,23 @@
 
 .contact-info a,
 .contact-info span {
-  color: #6d7288;
+  color: var(--color-text-muted);
   text-decoration: none;
 }
 
+/* =========================
+   IMAGE
+========================= */
+
 .contact-showcase__image {
   width: 100%;
-  max-width: 420px;
+  max-width: 510px;
   padding: 0.8rem;
   border-radius: 1.5rem;
-  border: 2px solid rgba(75, 79, 132, 0.18);
+  border: 2px solid var(--color-border);
   justify-self: end;
 }
+
 .contact-showcase__image img {
   width: 100%;
   height: 20rem;
@@ -85,6 +102,10 @@
   border-radius: 1rem;
   display: block;
 }
+
+/* =========================
+   DIVIDER
+========================= */
 
 .contact-divider {
   width: 100%;
@@ -101,124 +122,231 @@
   border-radius: 999px;
   opacity: 0.7;
 }
+
 /* =========================================================
-   BOOKING / CALENDLY CARD
-   ========================================================= */
+   BOOKING / CALENDLY
+========================================================= */
 
 .contact-booking {
-  padding: 10rem;
+  padding: 8rem 0;
+  background: var(--color-primary-soft);
 }
 
 .contact-booking h2 {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  margin-bottom: 2.5rem;
+  color: var(--color-text);
 }
 
 .contact-booking__card {
+  width: 100%;
   max-width: 46rem;
   margin: auto;
-  padding: 8rem 5rem;
+
+  padding: 5rem 4rem;
+
   display: grid;
-  gap: 1.5rem;
+  gap: 1.8rem;
+
   justify-items: center;
   text-align: center;
+
   border-radius: var(--radius-xl);
-  border: 1px solid rgba(75, 79, 132, 0.14);
+
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+
   box-shadow: var(--shadow-md);
+
+  box-sizing: border-box;
 }
 
 .contact-booking__card svg {
   width: 5rem;
   height: 5rem;
-  padding: 0.5rem;
+
+  padding: 0.7rem;
+
   border-radius: 50%;
-  background: rgba(31, 41, 55, 0.08);
+
+  background: var(--color-primary-soft);
   color: var(--color-primary);
 }
 
 .contact-booking__card p {
-  max-width: 28rem;
+  max-width: 30rem;
+
   font-style: italic;
-  color: #8b90b3;
+
+  color: var(--color-text-muted);
+
+  line-height: 1.7;
 }
 
+/* =========================
+   BOUTON CALENDLY
+========================= */
+
 .contact-booking__link {
-  background: #ffffff;
-  color: var(--color-primary);
-  border-color: rgba(236, 84, 47, 0.4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--color-primary);
+
+  color: var(--color-white);
+
+  border: 1.5px solid var(--color-primary);
+
+  padding: 0.75rem 1.6rem;
+
+  border-radius: 999px;
+
+  font-size: 0.95rem;
+
+  font-weight: 600;
+
+  letter-spacing: 0.02em;
+
+  transition: all 0.25s ease;
+
+  box-shadow: 0 8px 20px rgba(236, 84, 47, 0.18);
 }
 
 .contact-booking__link:hover,
 .contact-booking__link:focus-visible {
-  background: var(--color-primary-light);
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-}
-.contact-showcase {
-  padding: 7rem 0;
-  background: radial-gradient(
-    circle at top left,
-    rgba(236, 84, 47, 0.08),
-    transparent 35%
-  );
+  background: var(--color-primary-dark);
+
+  border-color: var(--color-primary-dark);
+
+  color: var(--color-white);
+
+  transform: translateY(-2px);
+
+  box-shadow: none;
 }
 
-.contact-divider {
+/* =========================
+   CALENDLY RESPONSIVE
+========================= */
+
+.calendly-inline-widget {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 1rem 0;
+  min-width: 0;
 }
 
-.contact-divider span {
-  width: 220px;
-  height: 1px;
-  background: var(--color-primary);
-  border-radius: 999px;
-  opacity: 0.35;
+.calendly-inline-widget iframe {
+  width: 100% !important;
+  min-width: 0 !important;
 }
 
-/* =========================================================
-   RESPONSIVE GLOBAL
-   ========================================================= */
+/* =========================
+   TABLET / MOBILE
+========================= */
 
-@media (max-width: 900px) {
-  .contact-hero,
-  .contact-booking,
+@media (max-width: 768px) {
   .contact-showcase {
-    padding: 4rem 1.5rem;
+    padding: 4rem 1rem;
   }
 
   .contact-showcase__wrapper {
     grid-template-columns: 1fr;
-    gap: 2rem;
-    justify-items: center;
+    gap: 3rem;
   }
 
   .contact-showcase__content {
     max-width: 100%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    order: 1;
   }
 
   .contact-showcase__image {
-    order: -1;
+    max-width: 100%;
+
     justify-self: center;
-    margin: 0 auto;
+
+    order: 2;
   }
 
   .contact-showcase__image img {
-    height: 18rem;
+    height: auto;
+
+    aspect-ratio: 4 / 3;
   }
 
   .contact-showcase h1 {
     font-size: 2.2rem;
   }
 
-  .contact-showcase p {
-    max-width: 34rem;
+  /* BOOKING */
+
+  .contact-booking {
+    padding: 4rem 1rem;
+  }
+
+  .contact-booking h2 {
+    font-size: 1.8rem;
+
+    margin-bottom: 2rem;
+  }
+
+  .contact-booking__card {
+    max-width: 100%;
+
+    padding: 2.5rem 1.2rem;
+
+    border-radius: 1.5rem;
+
+    gap: 1.2rem;
+  }
+
+  .contact-booking__card svg {
+    width: 4rem;
+
+    height: 4rem;
+  }
+
+  .contact-booking__card p {
+    font-size: 0.95rem;
+  }
+
+  .contact-booking__link {
+    width: auto;
+
+    min-width: 220px;
+  }
+}
+
+/* =========================
+   PETITS TELEPHONES
+========================= */
+
+@media (max-width: 480px) {
+  .contact-showcase h1 {
+    font-size: 1.9rem;
+  }
+
+  .contact-showcase__badge {
+    font-size: 0.65rem;
+  }
+
+  .contact-booking {
+    padding: 3rem 0.8rem;
+  }
+
+  .contact-booking h2 {
+    font-size: 1.5rem;
+  }
+
+  .contact-booking__card {
+    padding: 2rem 1rem;
+  }
+
+  .contact-booking__link {
+    min-width: 200px;
+
+    padding: 0.7rem 1.3rem;
+
+    font-size: 0.9rem;
   }
 }
