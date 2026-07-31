@@ -65,7 +65,7 @@ function setMediaBackground(mediaElement, imageUrl) {
 }
 
 async function fetchArticlesFromApi() {
-	const apiBase = window.ACTUALITES_API_BASE || "http://localhost:4000/api";
+	const apiBase = window.ACTUALITES_API_BASE || window.API_BASE || "/api";
 	const response = await fetch(`${apiBase}/articles`, { cache: "no-store" });
 
 	if (!response.ok) {

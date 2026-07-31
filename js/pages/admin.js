@@ -1,4 +1,4 @@
-const API_BASE = window.ADMIN_API_BASE || "http://localhost:4000/api";
+const API_BASE = window.ADMIN_API_BASE || window.API_BASE || "/api";
 const TOKEN_KEY = "volcanup_admin_access_token";
 const ADMIN_DISPLAY_NAME = "Madame Boilon";
 

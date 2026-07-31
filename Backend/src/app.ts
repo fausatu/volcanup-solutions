@@ -1,8 +1,8 @@
+import axios from "axios";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import express, { type NextFunction, type Request, type Response } from "express";
 import path from "path";
-import axios from "axios";
 import { env } from "./config/env";
 import { authRouter } from "./routes/auth.routes";
 import { articlesRouter } from "./routes/articles.routes";
@@ -18,7 +18,6 @@ const allowedOrigins = new Set([configuredOrigin, localhostVariant, loopbackVari
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow direct API calls (curl/postman) and configured local front origins.
       if (!origin || allowedOrigins.has(origin)) {
         callback(null, true);
         return;
@@ -55,9 +54,9 @@ app.get("/proxy/image", async (req: Request, res: Response) => {
 
   try {
     const response = await axios.get(url, { responseType: "stream" });
-    const contentType = response.headers["content-type"] || "image/*";
+    const rawContentType = response.headers["content-type"];
+    const contentType = typeof rawContentType === "string" ? rawContentType : "image/*";
     res.setHeader("Content-Type", contentType);
-    // Let the browser cache this proxied image for a long time
     res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
     response.data.pipe(res);
   } catch (error) {
