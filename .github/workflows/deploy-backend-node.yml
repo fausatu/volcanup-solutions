@@ -33,19 +33,28 @@ jobs:
         working-directory: Backend
         run: npm run build
 
-      - name: Deploy via FTP/FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Sync files to server (via SSH/rsync)
+        uses: burnett01/rsync-deployments@7.0.1
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          port: 21
-          protocol: ftps
-          server-dir: /nodevenv/dev
-          local-dir: ./Backend/
-          exclude: |
-            **/node_modules/**
-            **/.git*/
-            **/dist/**
-            **/*.md
-            **/prisma/migrations/**
+          switches: -avzr --delete
+          path: Backend/dist/ Backend/package.json Backend/package-lock.json Backend/prisma/
+          remote_path: ${{ secrets.SSH_APP_ROOT }}/
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_port: ${{ secrets.SSH_PORT }}
+          remote_user: ${{ secrets.SSH_USER }}
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Install deps + Prisma + restart (sur le serveur)
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            source ${{ secrets.SSH_NODEVENV_PATH }}/bin/activate
+            cd ${{ secrets.SSH_APP_ROOT }}
+            npm ci --omit=dev
+            npx prisma generate
+            npx prisma migrate deploy
+            /usr/sbin/cloudlinux-selector restart --json --interpreter=nodejs --app-root=${{ secrets.SSH_APP_ROOT }}
